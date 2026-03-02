@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://cak7pv6eitf07"]
+
+[node name="Floor" type="CSGBox3D"]
+use_collision = true

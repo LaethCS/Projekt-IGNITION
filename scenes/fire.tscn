@@ -1,0 +1,73 @@
+[gd_scene load_steps=10 format=3 uid="uid://d3dnc5g6a3nq4"]
+
+[ext_resource type="Script" uid="uid://cv3cufd2ufc7n" path="res://scripts/fire.gd" id="1_52nqi"]
+[ext_resource type="AudioStream" uid="uid://ct3ki7wcn32kw" path="res://Assets/sounds/fire_sound.mp3" id="2_xqmqg"]
+[ext_resource type="AudioStream" uid="uid://c1p7xwq2ulkie" path="res://Assets/sounds/fire_out_sound_effect_boosted.mp3" id="3_g5mbl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xqmqg"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_g5mbl"]
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rach5"]
+albedo_color = Color(1, 0.466667, 0, 1)
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_txieb"]
+material = SubResource("StandardMaterial3D_rach5")
+size = Vector2(0.3, 0.3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_52nqi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g5mbl"]
+
+[node name="Fire" type="Area3D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_52nqi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("BoxShape3D_xqmqg")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount = 150
+process_material = SubResource("ParticleProcessMaterial_g5mbl")
+draw_pass_1 = SubResource("QuadMesh_txieb")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("BoxMesh_52nqi")
+
+[node name="fire_sound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_xqmqg")
+unit_size = 7.0
+autoplay = true
+max_distance = 10.0
+
+[node name="extinguish_sound" type="AudioStreamPlayer3D" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("3_g5mbl")
+volume_db = 80.0
+unit_size = 29.85
+max_distance = 20.0
+
+[node name="DamageZone" type="Area3D" parent="."]
+transform = Transform3D(7.445, 0, 0, 0, 7.445, 0, 0, 0, 7.445, 0, 0, 0)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageZone"]
+transform = Transform3D(0.42, 0, 0, 0, 0.42, 0, 0, 0, 0.42, 0, 0, 0)
+shape = SubResource("BoxShape3D_g5mbl")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_entered" from="DamageZone" to="." method="_on_damage_zone_body_entered"]

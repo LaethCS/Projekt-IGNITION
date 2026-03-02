@@ -1,0 +1,37 @@
+[gd_scene load_steps=8 format=3 uid="uid://0nj17esmy8ie"]
+
+[ext_resource type="PackedScene" uid="uid://6w2wajaxov5u" path="res://scenes/player.tscn" id="1_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://d3dnc5g6a3nq4" path="res://scenes/fire.tscn" id="2_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://b0y2pg34gv4o3" path="res://scenes/wind_zone.tscn" id="3_iywne"]
+[ext_resource type="PackedScene" uid="uid://cak7pv6eitf07" path="res://scenes/floor.tscn" id="4_lbhrr"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lbhrr"]
+
+[sub_resource type="Sky" id="Sky_lbhrr"]
+sky_material = SubResource("ProceduralSkyMaterial_lbhrr")
+
+[sub_resource type="Environment" id="Environment_p57ef"]
+background_mode = 2
+sky = SubResource("Sky_lbhrr")
+
+[node name="Game" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_p57ef")
+
+[node name="Player" parent="." instance=ExtResource("1_lnu2h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.280493, 0)
+
+[node name="Fire" parent="." instance=ExtResource("2_lbhrr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.17547, 0)
+
+[node name="WindZone" parent="." instance=ExtResource("3_iywne")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, -1.71476, 0)
+visible = false
+
+[node name="Floor" parent="." instance=ExtResource("4_lbhrr")]
+transform = Transform3D(50, 0, 0, 0, 7.51, 0, 0, 0, 50, 0, -7, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.902367, 0.371742, 0.218039, -0.430968, 0.77836, 0.456533, 0, -0.505928, 0.862575, 0, 27.1976, -0.912609)
+shadow_enabled = true
