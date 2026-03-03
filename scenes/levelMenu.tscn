@@ -9,6 +9,7 @@ script = ExtResource("1_oo81m")
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_75otb")
+volume_db = -23.423
 autoplay = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
