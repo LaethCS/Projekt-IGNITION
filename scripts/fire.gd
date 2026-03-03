@@ -1,4 +1,5 @@
 extends Area3D
+signal fire_extinguished # Dieses Signal wird gesendet, wenn das Feuer gelöscht ist
 
 @export var max_health: float = 100.0
 var current_health: float
@@ -111,7 +112,9 @@ func die():
 	if not extinguish_sound.playing:
 		extinguish_sound.play()
 		
+ 	
 	await extinguish_sound.finished
+	fire_extinguished.emit()
 	queue_free()
 
 func _on_damage_zone_body_entered(body: Node3D) -> void:

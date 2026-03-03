@@ -1,6 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://bc4tx2asarwqa"]
+[gd_scene load_steps=14 format=3 uid="uid://bc4tx2asarwqa"]
 
 [ext_resource type="MeshLibrary" uid="uid://deixplkrgg182" path="res://scenes/SpaceKit_Library.tres" id="1_014kd"]
+[ext_resource type="Script" uid="uid://b5n0wulp2mk8l" path="res://scenes/level_1.gd" id="1_e3sih"]
+[ext_resource type="AudioStream" uid="uid://7ho4ri3scy41" path="res://Assets/sounds/win_soundeffect.mp3" id="2_2y5yt"]
 [ext_resource type="PackedScene" uid="uid://6w2wajaxov5u" path="res://scenes/player.tscn" id="2_5xbjy"]
 [ext_resource type="PackedScene" uid="uid://d3dnc5g6a3nq4" path="res://scenes/fire.tscn" id="3_4nkto"]
 [ext_resource type="PackedScene" uid="uid://b0y2pg34gv4o3" path="res://scenes/wind_zone.tscn" id="4_fcfvj"]
@@ -19,6 +21,31 @@ background_mode = 2
 sky = SubResource("Sky_iywne")
 
 [node name="Level_1" type="Node3D"]
+script = ExtResource("1_e3sih")
+
+[node name="WinUI" type="CanvasLayer" parent="."]
+
+[node name="WinLabel" type="Label" parent="WinUI"]
+visible = false
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.5
+offset_top = -11.5
+offset_right = 65.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "Level bestanden!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="win_soundeffect" type="AudioStreamPlayer" parent="WinUI/WinLabel"]
+stream = ExtResource("2_2y5yt")
 
 [node name="Grids" type="Node3D" parent="."]
 
@@ -66,13 +93,13 @@ data = {
 [node name="Player" parent="Gameplay" instance=ExtResource("2_5xbjy")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 47.4289, 3.1073, 19.2594)
 
-[node name="Fire" parent="Gameplay" instance=ExtResource("3_4nkto")]
+[node name="Fire" parent="Gameplay" groups=["Fires"] instance=ExtResource("3_4nkto")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 57.6735, 1.37323, 13.7922)
 
-[node name="Fire2" parent="Gameplay" instance=ExtResource("3_4nkto")]
+[node name="Fire2" parent="Gameplay" groups=["Fires"] instance=ExtResource("3_4nkto")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 58.971, 1.60585, 23.2331)
 
-[node name="Fire3" parent="Gameplay" instance=ExtResource("3_4nkto")]
+[node name="Fire3" parent="Gameplay" groups=["Fires"] instance=ExtResource("3_4nkto")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 81.8612, 0.982775, 21.6644)
 
 [node name="WindZone" parent="Gameplay" instance=ExtResource("4_fcfvj")]
