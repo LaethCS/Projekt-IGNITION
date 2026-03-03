@@ -5,9 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://d3dnc5g6a3nq4" path="res://scenes/fire.tscn" id="3_que50"]
 [ext_resource type="PackedScene" uid="uid://b0y2pg34gv4o3" path="res://scenes/wind_zone.tscn" id="4_hey2k"]
 [ext_resource type="PackedScene" uid="uid://d2epmyui58ti7" path="res://scenes/wind_particales.tscn" id="5_172wr"]
-[ext_resource type="AudioStream" uid="uid://bvkhcrgusnko7" path="res://Assets/sounds/portal_sound_effect_rau.mp3" id="6_g2hoc"]
-[ext_resource type="AudioStream" uid="uid://3wofho61fhqb" path="res://Assets/sounds/background_music.mp3" id="7_fldb1"]
-[ext_resource type="AudioStream" uid="uid://sk713vsmey0i" path="res://Assets/sounds/wind_sound_effect.mp3" id="8_guvtl"]
+[ext_resource type="AudioStream" uid="uid://cl08csv0gpnca" path="res://Assets/sounds/portal_sound_effect_rau.mp3" id="6_g2hoc"]
+[ext_resource type="AudioStream" uid="uid://bk82h43ai6jva" path="res://Assets/sounds/background_music.mp3" id="7_fldb1"]
+[ext_resource type="AudioStream" uid="uid://by3vsch2r3v82" path="res://Assets/sounds/wind_sound_effect.mp3" id="8_guvtl"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5xbjy"]
 

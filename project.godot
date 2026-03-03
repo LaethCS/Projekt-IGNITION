@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Project: IGNITION"
-run/main_scene="uid://0nj17esmy8ie"
+run/main_scene="uid://l4p42bgdsxho"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
