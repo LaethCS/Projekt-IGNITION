@@ -37,4 +37,4 @@ Um dieses Projekt lokal auszuführen oder daran weiterzuarbeiten:
 1. Lade dir **Godot 4** (Version 4.x) von der offiziellen Website herunter.
 2. Klone dieses Repository:
    ```bash
-   git clone [https://github.com/DEIN_USERNAME/brandschutz-simulator.git](https://github.com/DEIN_USERNAME/brandschutz-simulator.git)
+   git clone [https://github.com/LaethCS/Projekt-IGNITION.git]
