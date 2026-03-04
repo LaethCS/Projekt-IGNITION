@@ -11,8 +11,8 @@ var total_fires = 0
 var start_time: float = 0.0
 var final_time: float = 0.0
 # Schwellenwerte für die Bewertung (in Sekunden)
-@export var gold_time: float = 20.0
-@export var silver_time: float = 30.0
+@export var gold_time: float = 10.0
+@export var silver_time: float = 15.0
 
 func _ready():
 	#Timer wird gestartet zu Anfang des Spiels
