@@ -14,6 +14,7 @@ var final_time: float = 0.0
 @export var gold_time: float = 10.0
 @export var silver_time: float = 15.0
 
+#Fehlerhaft
 func _ready():
 	#Timer wird gestartet zu Anfang des Spiels
 	start_time = Time.get_unix_time_from_system()

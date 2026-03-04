@@ -4,14 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://6w2wajaxov5u" path="res://scenes/player.tscn" id="2_kuph3"]
 [ext_resource type="PackedScene" uid="uid://b0y2pg34gv4o3" path="res://scenes/wind_zone.tscn" id="4_wps6d"]
 [ext_resource type="PackedScene" uid="uid://d2epmyui58ti7" path="res://scenes/wind_particales.tscn" id="5_2hef4"]
-
 [ext_resource type="PackedScene" uid="uid://bgfe24noch4le" path="res://scenes/fire_extinguisher.tscn" id="5_abjnl"]
 [ext_resource type="AudioStream" uid="uid://bgf3el4dof18f" path="res://Assets/sounds/portal_sound_effect_rau.mp3" id="6_lk3oq"]
 [ext_resource type="ArrayMesh" uid="uid://bqwvjfgpw1pu3" path="res://scenes/lowpoly-truck.obj" id="6_wps6d"]
 [ext_resource type="Script" uid="uid://droupftqwfioc" path="res://scenes/FireTruck.gd" id="7_2hef4"]
 [ext_resource type="AudioStream" uid="uid://clhvrhimpd6c6" path="res://Assets/sounds/background_music.mp3" id="7_hrd5w"]
 [ext_resource type="AudioStream" uid="uid://d2ciyysl2lbwj" path="res://Assets/sounds/wind_sound_effect.mp3" id="8_5fwrv"]
-
 [ext_resource type="Script" uid="uid://oti8k8uhg6f0" path="res://scripts/sprinkler_system.gd" id="9_e3utc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_abjnl"]
@@ -125,7 +123,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.171686, 1.2866508, 8.60013
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.76822, 1.2366534, 7.6455164)
 
 [node name="LowpolyTruck" type="MeshInstance3D" parent="Gameplay" unique_id=155517471]
-transform = Transform3D(2.91, 0, 0, 0, 2.91, 0, 0, 0, 2.91, -2.0671997, 0.5506119, 11.835276)
+transform = Transform3D(2.91, 0, 0, 0, 2.91, 0, 0, 0, 2.91, 8.905271, 0.5506119, 15.259659)
 mesh = ExtResource("6_wps6d")
 script = ExtResource("7_2hef4")
 
@@ -170,10 +168,9 @@ stream = ExtResource("8_5fwrv")
 volume_db = 5.0
 autoplay = true
 
-[node name="SprinklerSystem" type="Node3D" parent="." unique_id=2079551140 node_paths=PackedStringArray("target_fire")]
+[node name="SprinklerSystem" type="Node3D" parent="." unique_id=2079551140]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 60.9568, 2.67022, -0.379)
 script = ExtResource("9_e3utc")
-target_fire = NodePath("")
 
 [node name="SwitchZone" type="Area3D" parent="SprinklerSystem" unique_id=730655449]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.086, -1.37892, 4.28822)
