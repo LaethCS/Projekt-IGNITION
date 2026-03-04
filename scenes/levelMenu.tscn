@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ceoxo50j1bpdr" path="res://scenes/level_menu.gd" id="1_oo81m"]
 [ext_resource type="Texture2D" uid="uid://kcxqs8to60xp" path="res://Assets/LevelSelect-background/LevelSelect_background.jpg" id="2_2mgwj"]
-[ext_resource type="AudioStream" uid="uid://bjwad033lis32" path="res://Assets/sounds/BackgroundMusic_LevelMenu.mp3" id="2_75otb"]
+[ext_resource type="AudioStream" uid="uid://bjwad033lis32" path="res://Assets/sounds/backgroundMusic_LevelMenu.mp3" id="2_75otb"]
 
 [node name="LevelMenu" type="Node2D"]
 script = ExtResource("1_oo81m")
@@ -79,8 +79,8 @@ offset_right = 799.0
 offset_bottom = 395.0
 text = "Level 7"
 
-[connection signal="pressed" from="Button-Manager/level1_button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button-Manager/level1_button" to="." method="_on_level_1_button_pressed"]
+[connection signal="pressed" from="Button-Manager/level1_button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button-Manager/level2_button" to="." method="_on_level_2_button_pressed"]
 [connection signal="pressed" from="Button-Manager/level3_button" to="." method="_on_level_3_button_pressed"]
 [connection signal="pressed" from="Button-Manager/level4_button" to="." method="_on_level_4_button_pressed"]
