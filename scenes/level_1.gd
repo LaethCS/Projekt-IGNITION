@@ -2,6 +2,7 @@ extends Node3D
 
 var total_fires = 0
 
+
 #Text und Soundeffect bei Level Completion
 @onready var win_label = $WinUI/WinLabel 
 @onready var win_sound = $WinUI/WinLabel/win_soundeffect 
@@ -32,17 +33,23 @@ func _on_fire_extinguished():
 	if total_fires <= 0:
 		_level_complete()
 
-func _calculate_rating(time: float ) -> String:
-	if time <= gold_time:
-		return "S (Brandschutz-Profi!)"
-	elif time <= silver_time:
-		return "A (Sehr gut)"
+func _calculate_rating(time: float, blowbacks: int) -> String:
+	if blowbacks == 0 and time <= gold_time:
+		return "S (Brandschutz-Profi)"
+	if time <= gold_time and blowbacks <= 2:
+		return ("A (Sehr gut)")
+	elif blowbacks <= 5:
+		return ("B (Gut)")
 	else: 
-		return "B (Gut gemacht)"
-
+		return "C (Bestanden - Achte mehr auf den Wind)"
+	
 func _level_complete():
 	final_time = Time.get_unix_time_from_system() - start_time
-	var rating = _calculate_rating(final_time)
+	var player = get_tree().root.find_child("Player", true, false)
+	var blowbacks = 0
+	if player:
+		blowbacks= player.blowback_count
+	var rating = _calculate_rating(final_time, blowbacks)
 	
 	win_label.text = "Level bestanden\nZeit: " +str(snapped(final_time, 0.1)) + " Sekunden \nBewertung: " +  rating
 	win_label.visible = true

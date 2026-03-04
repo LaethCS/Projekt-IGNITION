@@ -17,6 +17,7 @@ extends CharacterBody3D
 # --- VARIABLEN ---
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var current_wind_zone: Area3D = null # Speichert die Zone, in der wir sind
+var blowback_count: int = 0
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED # Maus verstecken
@@ -123,7 +124,7 @@ func apply_blowback_effect(delta):
 	# 1. Sicht verdecken (Weißer Nebel)
 	print("ALARM! BLOWBACK AKTIV!")
 	blindness_overlay.color.a = move_toward(blindness_overlay.color.a, 1.0, delta * 2.0)
-	
+	blowback_count +=1
 	# 2. Optional: Partikel fliegen zurück (Visueller Trick)
 	# Das ist etwas komplexer, für den Anfang reicht das Overlay
 
