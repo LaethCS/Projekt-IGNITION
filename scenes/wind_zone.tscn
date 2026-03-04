@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b0y2pg34gv4o3"]
+[gd_scene format=3 uid="uid://b0y2pg34gv4o3"]
 
 [ext_resource type="Script" uid="uid://c33b1cisbangs" path="res://scripts/wind_zone.gd" id="1_xncwx"]
 
@@ -23,18 +23,19 @@ albedo_color = Color(1, 1, 1, 0.462745)
 material = SubResource("StandardMaterial3D_xncwx")
 size = Vector3(0.2, 0.1, 1)
 
-[node name="WindZone" type="Area3D"]
+[node name="WindZone" type="Area3D" unique_id=1431742809 groups=["wind_zone"]]
 collision_layer = 8
+collision_mask = 0
 script = ExtResource("1_xncwx")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1305926900]
 shape = SubResource("BoxShape3D_l8tg2")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1208416822]
 visible = false
 mesh = SubResource("BoxMesh_xncwx")
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=631311750]
 visible = false
 amount = 140
 process_material = SubResource("ParticleProcessMaterial_xncwx")

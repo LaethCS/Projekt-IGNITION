@@ -1,14 +1,10 @@
 extends Area3D
 
-# Wir brauchen keine export Variable mehr für die Richtung,
-# weil wir jetzt die echte Rotation des Objekts benutzen!
-var wind_direction: Vector3
+# --- CONFIG ---
+@export var wind_direction: Vector3 = Vector3(0, 0, -1) # Default: blowing along -Z
+@export var wind_strength: float = 1.0      # Optional: intensity
 
-func _ready():
-	# HIER IST DER TRICK:
-	# "global_transform.basis.z" ist der Vektor, der nach HINTEN zeigt (aus dem Objekt raus).
-	# "-global_transform.basis.z" ist der Vektor, der nach VORNE zeigt.
-	
-	wind_direction = -global_transform.basis.z.normalized()
-	
-	print("WindZone initialisiert. Richtung: ", wind_direction)
+func _ready() -> void:
+	# Make sure the Area detects bodies
+	monitoring = true
+	monitorable = true

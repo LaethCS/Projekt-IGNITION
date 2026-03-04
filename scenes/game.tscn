@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://0nj17esmy8ie"]
+[gd_scene format=3 uid="uid://0nj17esmy8ie"]
 
 [ext_resource type="PackedScene" uid="uid://6w2wajaxov5u" path="res://scenes/player.tscn" id="1_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://d3dnc5g6a3nq4" path="res://scenes/fire.tscn" id="2_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://b0y2pg34gv4o3" path="res://scenes/wind_zone.tscn" id="3_iywne"]
 [ext_resource type="PackedScene" uid="uid://cak7pv6eitf07" path="res://scenes/floor.tscn" id="4_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://bgfe24noch4le" path="res://scenes/fire_extinguisher.tscn" id="5_iywne"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lbhrr"]
 
@@ -13,25 +14,29 @@ sky_material = SubResource("ProceduralSkyMaterial_lbhrr")
 [sub_resource type="Environment" id="Environment_p57ef"]
 background_mode = 2
 sky = SubResource("Sky_lbhrr")
+glow_enabled = true
+glow_blend_mode = 0
 
-[node name="Game" type="Node3D"]
+[node name="Game" type="Node3D" unique_id=916073513]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=182980213]
 environment = SubResource("Environment_p57ef")
 
-[node name="Player" parent="." instance=ExtResource("1_lnu2h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.280493, 0)
+[node name="Player" parent="." unique_id=912223365 instance=ExtResource("1_lnu2h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.280493, 3.7292018)
 
-[node name="Fire" parent="." instance=ExtResource("2_lbhrr")]
+[node name="Fire" parent="." unique_id=599769264 instance=ExtResource("2_lbhrr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.17547, 0)
 
-[node name="WindZone" parent="." instance=ExtResource("3_iywne")]
+[node name="WindZone" parent="." unique_id=888607911 instance=ExtResource("3_iywne")]
 transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, -1.71476, 0)
-visible = false
 
-[node name="Floor" parent="." instance=ExtResource("4_lbhrr")]
+[node name="Floor" parent="." unique_id=1954838314 instance=ExtResource("4_lbhrr")]
 transform = Transform3D(50, 0, 0, 0, 7.51, 0, 0, 0, 50, 0, -7, 0)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1403105441]
 transform = Transform3D(0.902367, 0.371742, 0.218039, -0.430968, 0.77836, 0.456533, 0, -0.505928, 0.862575, 0, 27.1976, -0.912609)
 shadow_enabled = true
+
+[node name="FireExtinguisher" parent="." unique_id=1005907744 instance=ExtResource("5_iywne")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.8604047)
