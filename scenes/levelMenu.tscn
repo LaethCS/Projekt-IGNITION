@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://l4p42bgdsxho"]
+[gd_scene format=3 uid="uid://l4p42bgdsxho"]
 
 [ext_resource type="Script" uid="uid://ceoxo50j1bpdr" path="res://scenes/level_menu.gd" id="1_oo81m"]
 [ext_resource type="Texture2D" uid="uid://kcxqs8to60xp" path="res://Assets/LevelSelect-background/LevelSelect_background.jpg" id="2_2mgwj"]

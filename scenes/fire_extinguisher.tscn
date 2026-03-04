@@ -36,6 +36,7 @@ radial_segments = 8
 rings = 4
 
 [node name="FireExtinguisher" type="RigidBody3D" unique_id=1005907744 groups=["extinguisher"]]
+collision_layer = 17
 script = ExtResource("1_h1dxr")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1800365959]

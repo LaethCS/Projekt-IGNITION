@@ -494,17 +494,18 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_iau7e")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0tygy"]
-radius = 0.13769531
-height = 0.7895508
+radius = 0.3984375
+height = 2.3526611
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nh2m4"]
-size = Vector3(0.49072266, 0.46142578, 0.36486816)
+size = Vector3(1.4429932, 1.2997437, 1.0393677)
 
-[node name="NPC" type="CharacterBody3D" unique_id=11783441]
+[node name="NPC" type="CharacterBody3D" unique_id=11783441 groups=["npc"]]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 script = ExtResource("1_nh2m4")
 
 [node name="Mesh" type="Node3D" parent="." unique_id=508061803]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 
 [node name="armLeft" type="MeshInstance3D" parent="Mesh" unique_id=840784933]
 transform = Transform3D(0.8584, 0, 0, 0, 0.8584, 0, 0, 0, 0.8584, -0.13, 0.473184, 0)
@@ -537,17 +538,20 @@ mesh = SubResource("ArrayMesh_hwkja")
 skeleton = NodePath("")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=1919076145]
+avoidance_enabled = true
+radius = 0.6
+neighbor_distance = 3.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=129911439]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.38989258, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1830444, 0)
 shape = SubResource("CapsuleShape3D_0tygy")
 
 [node name="PickupDetector" type="Area3D" parent="." unique_id=175514445]
 collision_layer = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PickupDetector" unique_id=1719789451]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.004638672, 0.23381783, -0.29639745)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0049438477, 0.65297693, -0.6336472)
 shape = SubResource("BoxShape3D_nh2m4")
 
 [node name="HoldPosition" type="Node3D" parent="." unique_id=882557778]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.18488832, 0.38426125, -0.308462)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.56061184, 1.2241131, -0.70076126)

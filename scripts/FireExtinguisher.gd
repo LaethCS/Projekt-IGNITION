@@ -26,18 +26,19 @@ func _ready() -> void:
 	particles.emitting = false
 
 func _physics_process(delta: float) -> void:
+	print(scale)
 	if not is_held:
 		return
 
 	# Only process spray if player is holding fire
 	if Input.is_action_pressed("fire") and current_amount > 0:
 		if check_wind_direction_is_safe():
-			_start_spraying()
+			start_spraying()
 		else:
-			_start_spraying()
+			start_spraying()
 			holder.apply_blowback_effect()
 	else:
-		_stop_spraying()
+		stop_spraying()
 
 	# Tank depletion
 	if spray_ray.enabled:
@@ -50,6 +51,9 @@ func _physics_process(delta: float) -> void:
 
 # --- PICK UP ---
 func pick_up(holder_node: Node3D) -> void:
+	if is_held and holder:
+		holder.extinguisher = null
+	
 	is_held = true
 	holder = holder_node
 	
@@ -76,7 +80,8 @@ func pick_up(holder_node: Node3D) -> void:
 			transform.origin = Vector3(0, 1.0, 0) # offset above NPC
 
 	freeze = true
-	collision.disabled = true
+	set_collision_mask_value(1, false)
+	set_collision_layer_value(1, false)
 
 # --- DROP ---
 func drop() -> void:
@@ -96,7 +101,8 @@ func drop() -> void:
 	var drop_offset = Vector3(0, 1.0, -1.0)
 	global_transform.origin = holder.global_transform.origin + holder.global_transform.basis * drop_offset
 
-	collision.disabled = false
+	set_collision_mask_value(1, true)
+	set_collision_layer_value(1, true)
 	freeze = false
 
 	# Small push forward
@@ -109,7 +115,7 @@ func drop() -> void:
 		sound.stop()
 
 # --- SPRAY START / STOP ---
-func _start_spraying() -> void:
+func start_spraying() -> void:
 	if current_amount <= 0:
 		return
 
@@ -121,7 +127,7 @@ func _start_spraying() -> void:
 	if spray_ray.is_colliding():
 		_process_hit(spray_ray.get_collider())
 
-func _stop_spraying() -> void:
+func stop_spraying() -> void:
 	particles.emitting = false
 	spray_ray.enabled = false
 	if sound.playing:
@@ -131,16 +137,16 @@ func _stop_spraying() -> void:
 func _process_hit(hit_obj: Object) -> void:
 	if not hit_obj or not is_instance_valid(hit_obj):
 		return
-
+	
 	if hit_obj.has_method("extinguish"):
 		hit_obj.extinguish(extinguish_power)
-	elif hit_obj.get_parent() and hit_obj.get_parent().has_method("extinguish"):
+	elif hit_obj.get_parent() and hit_obj.get_parent().is_in_group("fire"):
 		hit_obj.get_parent().extinguish(extinguish_power)
 
 # --- WIND CHECK ---
 func check_wind_direction_is_safe() -> bool:
 
-	if holder == null:
+	if holder == null or !holder.is_in_group("player"):
 		return true
 	
 	var wind_dir = holder.get_current_wind_direction()

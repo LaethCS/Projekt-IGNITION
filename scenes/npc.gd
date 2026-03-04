@@ -4,7 +4,7 @@ extends CharacterBody3D
 # CONFIG
 # ----------------------
 @export var move_speed: float = 3.5
-@export var spray_range: float = 5.0
+@export var spray_range: float = 2.5
 
 # ----------------------
 # STATE
@@ -37,6 +37,8 @@ func _on_pickup_detector_entered(body: Node) -> void:
 # MAIN LOOP
 # ----------------------
 func _physics_process(delta):
+	if not is_on_floor():
+		velocity.y -= 9.8 * delta
 	match state:
 		"IDLE":
 			if extinguisher:
@@ -86,10 +88,21 @@ func _move_to_target(delta):
 		return
 
 	nav.target_position = target_fire.global_transform.origin
+
 	var next_pos = nav.get_next_path_position()
-	var dir = (next_pos - global_transform.origin).normalized()
-	velocity = dir * move_speed
+	var dir = (next_pos - global_transform.origin)
+	dir.y = 0
+	dir = dir.normalized()
+
+	# Move
+	velocity.x = dir.x * move_speed
+	velocity.z = dir.z * move_speed
 	move_and_slide()
+
+	# Rotate smoothly toward movement direction
+	if dir.length() > 0.1:
+		var target_basis = Basis().looking_at(dir, Vector3.UP)
+		global_transform.basis = global_transform.basis.slerp(target_basis, delta * 6.0)
 
 # ----------------------
 # USE EXTINGUISHER
@@ -100,14 +113,20 @@ func _use_extinguisher(delta):
 		state = "IDLE"
 		return
 
-	# Face the fire
-	look_at(target_fire.global_transform.origin, Vector3.UP)
+	# Face fire (Y axis only)
+	var fire_dir = target_fire.global_transform.origin - global_transform.origin
+	fire_dir.y = 0
+	fire_dir = fire_dir.normalized()
 
-	# Call the existing spray method from extinguisher
+	if fire_dir.length() > 0.1:
+		var target_basis = Basis().looking_at(fire_dir, Vector3.UP)
+		global_transform.basis = global_transform.basis.slerp(target_basis, delta * 6.0)
+
+	# Spray
 	if extinguisher.has_method("start_spraying"):
 		extinguisher.start_spraying()
 
-	# Move slightly closer if needed
+	# Check distance
 	var distance = global_transform.origin.distance_to(target_fire.global_transform.origin)
 	if distance > spray_range:
 		state = "MOVE_TO_FIRE"

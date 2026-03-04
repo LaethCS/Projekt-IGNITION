@@ -113,8 +113,8 @@ func die():
 	if not extinguish_sound.playing:
 		extinguish_sound.play()
 
-	#await extinguish_sound.finished
-	#queue_free()
+	await extinguish_sound.finished
+	queue_free()
 
 
 # ============================================================
