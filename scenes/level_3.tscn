@@ -1,13 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://cameblypnkvv8"]
+[gd_scene load_steps=14 format=3 uid="uid://cameblypnkvv8"]
 
+[ext_resource type="Script" uid="uid://dbcryx0x4g56s" path="res://scenes/level_3.gd" id="1_vcx5n"]
 [ext_resource type="MeshLibrary" uid="uid://deixplkrgg182" path="res://scenes/SpaceKit_Library.tres" id="1_wae8j"]
+[ext_resource type="AudioStream" uid="uid://7ho4ri3scy41" path="res://Assets/sounds/win_soundeffect.mp3" id="2_56dhn"]
 [ext_resource type="PackedScene" uid="uid://6w2wajaxov5u" path="res://scenes/player.tscn" id="2_ha73p"]
 [ext_resource type="PackedScene" uid="uid://d3dnc5g6a3nq4" path="res://scenes/fire.tscn" id="3_vcx5n"]
 [ext_resource type="PackedScene" uid="uid://b0y2pg34gv4o3" path="res://scenes/wind_zone.tscn" id="4_56dhn"]
 [ext_resource type="PackedScene" uid="uid://d2epmyui58ti7" path="res://scenes/wind_particales.tscn" id="5_ax3dk"]
-[ext_resource type="AudioStream" uid="uid://bvkhcrgusnko7" path="res://Assets/sounds/portal_sound_effect_rau.mp3" id="6_q2dsb"]
-[ext_resource type="AudioStream" uid="uid://3wofho61fhqb" path="res://Assets/sounds/background_music.mp3" id="7_p3r0x"]
-[ext_resource type="AudioStream" uid="uid://sk713vsmey0i" path="res://Assets/sounds/wind_sound_effect.mp3" id="8_5xqnf"]
+[ext_resource type="AudioStream" uid="uid://cl08csv0gpnca" path="res://Assets/sounds/portal_sound_effect_rau.mp3" id="6_q2dsb"]
+[ext_resource type="AudioStream" uid="uid://bk82h43ai6jva" path="res://Assets/sounds/background_music.mp3" id="7_p3r0x"]
+[ext_resource type="AudioStream" uid="uid://by3vsch2r3v82" path="res://Assets/sounds/wind_sound_effect.mp3" id="8_5xqnf"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5xbjy"]
 
@@ -20,6 +22,55 @@ sky = SubResource("Sky_iywne")
 
 [node name="Level_3" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0563354, 1.90735e-06, 0.0414619)
+script = ExtResource("1_vcx5n")
+
+[node name="WinUI" type="CanvasLayer" parent="."]
+
+[node name="WinLabel" type="Label" parent="WinUI"]
+visible = false
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.5
+offset_top = -11.5
+offset_right = 65.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "Level bestanden!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="win_soundeffect" type="AudioStreamPlayer" parent="WinUI/WinLabel"]
+stream = ExtResource("2_56dhn")
+
+[node name="WinUI" type="CanvasLayer" parent="WinUI"]
+
+[node name="WinLabel" type="Label" parent="WinUI/WinUI"]
+visible = false
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.5
+offset_top = -11.5
+offset_right = 65.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "Level bestanden!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="win_soundeffect" type="AudioStreamPlayer" parent="WinUI/WinUI/WinLabel"]
+stream = ExtResource("2_56dhn")
 
 [node name="Grids" type="Node3D" parent="."]
 
@@ -77,11 +128,11 @@ metadata/_editor_floor_ = Vector3(4, 8, 0)
 [node name="Player" parent="Gameplay" instance=ExtResource("2_ha73p")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 51.9867, 3.01992, 7.55751)
 
-[node name="Feuer_Unten" parent="Gameplay" node_paths=PackedStringArray("fire_source") instance=ExtResource("3_vcx5n")]
+[node name="Feuer_Unten" parent="Gameplay" node_paths=PackedStringArray("fire_source") groups=["Fires"] instance=ExtResource("3_vcx5n")]
 transform = Transform3D(-6.55671e-08, 0, 1.5, 0, 1.5, 0, -1.5, 0, -6.55671e-08, 62.6737, 1.45782, 7.40391)
 fire_source = NodePath("../Feuer_Oben")
 
-[node name="Feuer_Oben" parent="Gameplay" instance=ExtResource("3_vcx5n")]
+[node name="Feuer_Oben" parent="Gameplay" groups=["Fires"] instance=ExtResource("3_vcx5n")]
 transform = Transform3D(-1.505, 0, -2.27249e-07, 0, 1.505, 0, 2.27249e-07, 0, -1.505, 62.3221, 2.68781, 7.29057)
 
 [node name="WindZone" parent="Gameplay" instance=ExtResource("4_56dhn")]

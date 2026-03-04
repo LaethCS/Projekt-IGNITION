@@ -1,0 +1,99 @@
+[gd_scene load_steps=4 format=3 uid="uid://l4p42bgdsxho"]
+
+[ext_resource type="Script" uid="uid://ceoxo50j1bpdr" path="res://scenes/level_menu.gd" id="1_oo81m"]
+[ext_resource type="Texture2D" uid="uid://kcxqs8to60xp" path="res://Assets/LevelSelect-background/LevelSelect_background.jpg" id="2_2mgwj"]
+[ext_resource type="AudioStream" uid="uid://bjwad033lis32" path="res://Assets/sounds/backgroundMusic_LevelMenu.mp3" id="2_75otb"]
+
+[node name="LevelMenu" type="Node2D"]
+script = ExtResource("1_oo81m")
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_75otb")
+volume_db = -23.423
+autoplay = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 1161.0
+offset_bottom = 656.0
+texture = ExtResource("2_2mgwj")
+
+[node name="Button-Manager" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="level1_button" type="Button" parent="Button-Manager"]
+layout_mode = 0
+offset_left = 316.0
+offset_top = 185.0
+offset_right = 399.0
+offset_bottom = 246.0
+text = "Level 1"
+
+[node name="level2_button" type="Button" parent="Button-Manager"]
+layout_mode = 0
+offset_left = 451.0
+offset_top = 184.0
+offset_right = 537.0
+offset_bottom = 249.0
+text = "Level 2"
+
+[node name="level3_button" type="Button" parent="Button-Manager"]
+layout_mode = 0
+offset_left = 623.0
+offset_top = 186.0
+offset_right = 712.0
+offset_bottom = 253.0
+text = "Level 3"
+
+[node name="level4_button" type="Button" parent="Button-Manager"]
+layout_mode = 0
+offset_left = 779.0
+offset_top = 185.0
+offset_right = 858.0
+offset_bottom = 253.0
+text = "Level 4"
+
+[node name="level5_button" type="Button" parent="Button-Manager"]
+layout_mode = 0
+offset_left = 323.0
+offset_top = 330.0
+offset_right = 398.0
+offset_bottom = 397.0
+text = "Level 5"
+
+[node name="level6_button" type="Button" parent="Button-Manager"]
+layout_mode = 0
+offset_left = 460.0
+offset_top = 329.0
+offset_right = 540.0
+offset_bottom = 399.0
+text = "Level 6"
+
+[node name="level7_button" type="Button" parent="Button-Manager"]
+layout_mode = 0
+offset_left = 631.0
+offset_top = 330.0
+offset_right = 722.0
+offset_bottom = 397.0
+text = "Level 7"
+
+[node name="handout_button" type="Button" parent="Button-Manager"]
+layout_mode = 0
+offset_left = 775.0
+offset_top = 331.0
+offset_right = 867.0
+offset_bottom = 397.0
+text = "HandOut"
+
+[connection signal="pressed" from="Button-Manager/level1_button" to="." method="_on_level_1_button_pressed"]
+[connection signal="pressed" from="Button-Manager/level1_button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button-Manager/level2_button" to="." method="_on_level_2_button_pressed"]
+[connection signal="pressed" from="Button-Manager/level3_button" to="." method="_on_level_3_button_pressed"]
+[connection signal="pressed" from="Button-Manager/level4_button" to="." method="_on_level_4_button_pressed"]
+[connection signal="pressed" from="Button-Manager/level5_button" to="." method="_on_level_5_button_pressed"]
+[connection signal="pressed" from="Button-Manager/level6_button" to="." method="_on_level_6_button_pressed"]
+[connection signal="pressed" from="Button-Manager/level7_button" to="." method="_on_level_7_button_pressed"]
+[connection signal="pressed" from="Button-Manager/handout_button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button-Manager/handout_button" to="." method="_on_handout_button_pressed"]

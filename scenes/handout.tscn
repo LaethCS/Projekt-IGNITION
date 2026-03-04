@@ -1,0 +1,101 @@
+[gd_scene load_steps=2 format=3 uid="uid://do0uq4sgcb8wl"]
+
+[ext_resource type="Script" uid="uid://cif0ba6shx7fi" path="res://scenes/handout.gd" id="1_j4vjk"]
+
+[node name="Handout" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_j4vjk")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+offset_right = 1153.0
+offset_bottom = 643.0
+color = Color(0.154876, 0.154876, 0.154876, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 1154.0
+offset_bottom = 102.0
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "PROJECT IGNITION - STEUERUNG"
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "BEWEGEN : W, A, S, D"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "UMSEHEN : MAUSBEWEGUNG"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "FEUERLÖSCHER BENUTZEN : LINKE MAUSTASTE (GEDRÜCKT HALTEN)"
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "SPRINGEN : LEERTASTE"
+horizontal_alignment = 1
+
+[node name="Label7" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label8" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "ERKLÄRUNG DER EINZELNEN LEVELS"
+horizontal_alignment = 1
+
+[node name="Label9" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label10" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Level 1 (Windrichtung) : Greife das Feuer immer in Windrichtung an. Wer gegen den Wind sprüht, riskiert dass im das Löschmittel ins Gesicht weht.
+"
+
+[node name="Label11" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Level 2 (Flächenbrände): Flächenbrände müssen immer von vorn beginnend abgelöscht werden, nicht von hinten oder aus der Mitte.  
+"
+
+[node name="Label12" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Level 3 (Tropf- und Fließbrände): Brennende Flüssigkeiten, die herabtropfen, müssen zwingend von oben (der Quelle) nach unten gelöscht werden.  
+"
+
+[node name="Label13" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Level 4 (Wandbrände): Im Gegensatz zu Tropfbränden müssen Brände an Wänden von unten nach oben gelöscht werden.  
+"
+
+[node name="Label14" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Level 5 (Teamwork): Setze bei großen Bränden ausreichend Löschmittel gleichzeitig ein. 
+"
+
+[node name="Label15" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Level 6 (Rückzündung): Auch wenn die Flammen erloschen sind, bleibt eine unsichtbare Glut. 
+"
+
+[node name="Label16" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Level 7 (Entsorgung): Hänge einen entleerten Feuerlöscher niemals zurück an den Wandhalter! Bringe ihn stattdessen zur Wartung und 
+Neubefüllung."
+
+[node name="zurück_button" type="Button" parent="."]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 73.0
+text = "ZURÜCK"
+
+[connection signal="pressed" from="zurück_button" to="." method="_on_zurück_button_pressed"]

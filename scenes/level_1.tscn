@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://bc4tx2asarwqa"]
 
 [ext_resource type="MeshLibrary" uid="uid://deixplkrgg182" path="res://scenes/SpaceKit_Library.tres" id="1_014kd"]
+[ext_resource type="Script" uid="uid://b5n0wulp2mk8l" path="res://scenes/level_1.gd" id="1_e3sih"]
+[ext_resource type="AudioStream" uid="uid://7ho4ri3scy41" path="res://Assets/sounds/win_soundeffect.mp3" id="2_2y5yt"]
 [ext_resource type="PackedScene" uid="uid://6w2wajaxov5u" path="res://scenes/player.tscn" id="2_5xbjy"]
 [ext_resource type="PackedScene" uid="uid://d3dnc5g6a3nq4" path="res://scenes/fire.tscn" id="3_4nkto"]
 [ext_resource type="PackedScene" uid="uid://b0y2pg34gv4o3" path="res://scenes/wind_zone.tscn" id="4_fcfvj"]

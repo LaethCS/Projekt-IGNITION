@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://dx7pcmxmcnaoj"]
 
+[ext_resource type="Script" uid="uid://b1wv7ohh0nejj" path="res://scenes/level_5.gd" id="1_1q3ip"]
 [ext_resource type="MeshLibrary" uid="uid://deixplkrgg182" path="res://scenes/SpaceKit_Library.tres" id="1_ij176"]
+[ext_resource type="AudioStream" uid="uid://7ho4ri3scy41" path="res://Assets/sounds/win_soundeffect.mp3" id="2_e4ab4"]
 [ext_resource type="PackedScene" uid="uid://6w2wajaxov5u" path="res://scenes/player.tscn" id="2_uva14"]
 [ext_resource type="PackedScene" uid="uid://d3dnc5g6a3nq4" path="res://scenes/fire.tscn" id="3_vqwqk"]
 [ext_resource type="PackedScene" uid="uid://b0y2pg34gv4o3" path="res://scenes/wind_zone.tscn" id="4_1q3ip"]
@@ -43,6 +45,31 @@ height = 0.1
 
 [node name="Level_5" type="Node3D" unique_id=558912970]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0563354, 1.90735e-06, 0.0414619)
+script = ExtResource("1_1q3ip")
+
+[node name="WinUI" type="CanvasLayer" parent="."]
+
+[node name="WinLabel" type="Label" parent="WinUI"]
+visible = false
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -65.5
+offset_top = -11.5
+offset_right = 65.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "Level bestanden!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="win_soundeffect" type="AudioStreamPlayer" parent="WinUI/WinLabel"]
+stream = ExtResource("2_e4ab4")
 
 [node name="Grids" type="Node3D" parent="." unique_id=416370444]
 
