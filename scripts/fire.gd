@@ -1,129 +1,268 @@
-extends Area3D
-signal fire_extinguished # Dieses Signal wird gesendet, wenn das Feuer gelöscht ist
+extends Node3D
+
+# ============================================================
+# CONFIG
+# ============================================================
 
 @export var max_health: float = 100.0
+@export var fire_source: Node = null
+@export var auto_heal_rate: float = 0.0
+@export var can_reignite: bool = false
+
+# Wind influence multiplier
+@export var wind_direction_strength: float = 0.4
+
+# ============================================================
+# STATE
+# ============================================================
+
 var current_health: float
+var is_dead: bool = false
 
-@export var fire_source: Area3D = null 
-@export var auto_heal_rate: float = 0.0 
-@export var can_reignite: bool = false 
-
-var is_dead: bool = false 
-
-# --- Glut-Variablen für Level 6 ---
+# Ember system
 var is_ember: bool = false
 var ember_timer: float = 0.0
-var ember_health: float = 50.0 # So viel muss "nachgekühlt" werden
+var ember_health: float = 50.0
+const EMBER_REIGNITE_TIME := 3.0
 
-@onready var light = $OmniLight3D
-@onready var particles = $GPUParticles3D
-@onready var fire_sound = $fire_sound 
-@onready var extinguish_sound = %extinguish_sound
+# Wind
+var current_wind: Area3D = null
+var base_direction: Vector3 = Vector3.UP
+var base_velocity: float = 3.0
+
+# ============================================================
+# NODES
+# ============================================================
+
+@onready var light: OmniLight3D = $Visuals/OmniLight3D
+@onready var particles: GPUParticles3D = $Visuals/FireParticles
+@onready var fire_sound: AudioStreamPlayer3D = $fire_sound
+@onready var extinguish_sound: AudioStreamPlayer3D = %extinguish_sound
+@onready var damage_zone: Area3D = $DamageZone
+@onready var wind_detector: Area3D = $WindDetector
+
+
+# ============================================================
+# READY
+# ============================================================
 
 func _ready():
 	current_health = max_health
+	
+	damage_zone.body_entered.connect(_on_damage_zone_body_entered)
+	wind_detector.area_entered.connect(_on_wind_entered)
+	wind_detector.area_exited.connect(_on_wind_exited)
+
+	# Make particle material unique per instance
+	if particles.process_material:
+		particles.process_material = particles.process_material.duplicate()
+	var mat = particles.process_material
+	if mat:
+		base_direction = mat.direction
+		base_velocity = mat.initial_velocity_min
+
+# ============================================================
+# PROCESS
+# ============================================================
 
 func _process(delta):
-	# --- LEVEL 3 & 4: Die Regeneration ---
-	if fire_source != null and is_instance_valid(fire_source):
-		if fire_source.current_health > 0 and not fire_source.is_dead:
-			if not is_dead and current_health < max_health:
-				current_health += 50.0 * delta
-				current_health = min(current_health, max_health)
-				_update_visuals()
 
-	# --- LEVEL 5: Selbstheilung ---
-	if auto_heal_rate > 0 and current_health > 0 and not is_dead and not is_ember:
-		current_health += auto_heal_rate * delta
-		current_health = min(current_health, max_health)
-		_update_visuals()
-
-	# --- LEVEL 6: Der Glut-Timer tickt! ---
-	if is_ember:
-		ember_timer += delta
-		if ember_timer >= 3.0: # Nach 3 Sekunden ohne ausreichendes Kühlen...
-			print("RÜCKZÜNDUNG! Feuer ist wieder da!")
-			is_ember = false
-			current_health = max_health
-			ember_timer = 0.0
-			ember_health = 50.0
-			particles.emitting = true
-			_update_visuals()
-			
-			# --- NEU FÜR LEVEL 6 SOUNDS: Knistern wieder starten! ---
-			if not fire_sound.playing:
-				fire_sound.play()
-
-func _update_visuals():
-	var health_percent = current_health / max_health
-	health_percent = max(health_percent, 0.0) 
-	light.light_energy = health_percent
-	particles.amount_ratio = health_percent
-
-# Diese Funktion wird vom Feuerlöscher aufgerufen
-func extinguish(amount: float):
 	if is_dead:
-		return 
-		
-	# --- LEVEL 6: Nachkühlen der Glut ---
+		return
+
+	_flicker_light()
+	_handle_regeneration(delta)
+	_handle_ember(delta)
+	_handle_wind(delta)
+
+
+# ============================================================
+# CORE SYSTEMS
+# ============================================================
+
+func extinguish(amount: float):
+
+	if is_dead:
+		return
+
+	# Ember cooling phase
 	if is_ember:
 		ember_health -= amount
 		if ember_health <= 0:
-			die() # Jetzt ist es WIRKLICH tot!
-		return # Wichtig: Hier abbrechen, damit der normale Schaden nicht berechnet wird
+			die()
+		return
 
-	# --- Normaler Feuer-Schaden ---
 	current_health -= amount
 	_update_visuals()
-	
+
 	if current_health <= 0:
-		if fire_source != null and is_instance_valid(fire_source) and not fire_source.is_dead:
-			pass # Unsterblich wegen Quelle
-		elif can_reignite and not is_ember:
-			# --- LEVEL 6 FALLE SCHNAPPT ZU ---
-			is_ember = true
-			particles.emitting = false 
-			light.light_energy = 0.2 
-			
-			# --- NEU FÜR LEVEL 6 SOUNDS: Die Täuschung! ---
-			if fire_sound.playing:
-				fire_sound.stop() # Knistern stoppen
-			extinguish_sound.play() # Zischen abspielen, als wäre es gelöscht!
-			
-			print("Feuer scheint aus... aber Glut ist noch heiß!")
-		else:
-			die()
+		_try_enter_ember_or_die()
+
 
 func die():
-	is_dead = true 
+	is_dead = true
 	is_ember = false
-	print("Feuer endgültig gelöscht! Sound startet jetzt...")
-	
+
 	particles.emitting = false
 	light.visible = false
-	$MeshInstance3D.visible = false 
-	
-	$CollisionShape3D.set_deferred("disabled", true)
-	
+	damage_zone.get_node("CollisionShape3D").set_deferred("disabled", true)
+
 	if fire_sound.playing:
 		fire_sound.stop()
-	
-	# Wenn der Sound nicht schon von der Falle läuft, spielen wir ihn ab
+
 	if not extinguish_sound.playing:
 		extinguish_sound.play()
-		
- 	
-	await extinguish_sound.finished
-	fire_extinguished.emit()
-	queue_free()
 
-func _on_damage_zone_body_entered(body: Node3D) -> void:
-	if body.name == "Player":
-		if (current_health > 0 or is_ember) and not is_dead: 
-			GlobalStats.deaths_in_current_level +=1
-			if body.has_method("show_game_over"):
-				body.show_game_over()
-			
-			print("DU BIST VERBRANNT! Level wird in 0.5s neu gestartet...")
-			await get_tree().create_timer(0.5).timeout
-			get_tree().reload_current_scene()
+	#await extinguish_sound.finished
+	#queue_free()
+
+
+# ============================================================
+# EMBER SYSTEM
+# ============================================================
+
+func _try_enter_ember_or_die():
+
+	# Protected by fire source
+	if fire_source and is_instance_valid(fire_source):
+		if fire_source.current_health > 0:
+			return
+
+	if can_reignite:
+		is_ember = true
+		ember_timer = 0.0
+		particles.emitting = false
+		light.light_energy = 0.2
+
+		if fire_sound.playing:
+			fire_sound.stop()
+
+		extinguish_sound.play()
+	else:
+		die()
+
+
+func _handle_ember(delta):
+
+	if not is_ember:
+		return
+
+	ember_timer += delta
+
+	if ember_timer >= EMBER_REIGNITE_TIME:
+		_reignite()
+
+
+func _reignite():
+	is_ember = false
+	current_health = max_health
+	ember_timer = 0.0
+	ember_health = 50.0
+
+	particles.emitting = true
+	fire_sound.play()
+	_update_visuals()
+
+
+# ============================================================
+# REGENERATION
+# ============================================================
+
+func _handle_regeneration(delta):
+
+	if is_ember:
+		return
+
+	# Linked source regeneration
+	if fire_source and is_instance_valid(fire_source):
+		if fire_source.current_health > 0 and current_health < max_health:
+			current_health += 50.0 * delta
+
+	# Passive regeneration
+	if auto_heal_rate > 0 and current_health > 0:
+		current_health += auto_heal_rate * delta
+
+	current_health = clamp(current_health, 0.0, max_health)
+	_update_visuals()
+
+
+# ============================================================
+# WIND SYSTEM (Velocity BASED)
+# ============================================================
+
+func _on_wind_entered(area: Area3D):
+	if area.is_in_group("wind_zone"):
+		current_wind = area
+
+func _on_wind_exited(area: Area3D):
+	if area == current_wind:
+		current_wind = null
+
+func _handle_wind(delta):
+
+	var mat = particles.process_material
+	if mat == null:
+		return
+
+	if current_wind:
+		var wind_dir = -current_wind.wind_direction.normalized()
+		var strength = current_wind.wind_strength
+
+		# Blend direction smoothly
+		mat.direction = mat.direction.lerp(
+			Vector3.UP + wind_dir * 0.6 * strength,
+			delta * 3.0
+		)
+
+		# Increase velocity slightly with wind
+		mat.initial_velocity_min = lerp(
+			mat.initial_velocity_min,
+			base_velocity + strength,
+			delta * 3.0
+		)
+
+	else:
+		# Return to normal
+		mat.direction = mat.direction.lerp(
+			base_direction,
+			delta * 3.0
+		)
+
+		mat.initial_velocity_min = lerp(
+			mat.initial_velocity_min,
+			base_velocity,
+			delta * 3.0
+		)
+
+
+# ============================================================
+# VISUALS
+# ============================================================
+
+func _update_visuals():
+	var percent = clamp(current_health / max_health, 0.0, 1.0)
+	light.light_energy = percent * 3.0
+	particles.amount_ratio = percent
+
+
+func _flicker_light():
+	if light.visible:
+		light.light_energy += randf() * 0.2
+
+
+# ============================================================
+# DAMAGE ZONE
+# ============================================================
+
+func _on_damage_zone_body_entered(body: Node3D):
+
+	if body.name != "Player":
+		return
+
+	if (current_health > 0 or is_ember) and not is_dead:
+
+		if body.has_method("show_game_over"):
+			body.show_game_over()
+
+		await get_tree().create_timer(0.5).timeout
+		get_tree().reload_current_scene()
