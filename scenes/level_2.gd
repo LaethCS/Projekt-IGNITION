@@ -32,17 +32,23 @@ func _on_fire_extinguished():
 	if total_fires <= 0:
 		_level_complete()
 
-func _calculate_rating(time: float ) -> String:
-	if time <= gold_time:
-		return "S (Brandschutz-Profi!)"
-	elif time <= silver_time:
-		return "A (Sehr gut)"
+func _calculate_rating(time: float, deaths: int) -> String:
+	var penalty_time = time + (deaths * 10.0)
+	
+	#Bewertung basierend auf der berechneten Zeit
+	if penalty_time <= 45.0:
+		return ("S (Brandschutz-Meister)")
+	elif penalty_time <= 55.0:
+		return ("A (Sehr gut)")
+	elif penalty_time <= 75.0:
+		return ("B (Gut - Vorsicht vor dem Feuer!)")
 	else: 
-		return "B (Gut gemacht)"
+		return ("C (Bestanden - Achte auf \nden Sicherheitsabstand)")
 
 func _level_complete():
 	final_time = Time.get_unix_time_from_system() - start_time
-	var rating = _calculate_rating(final_time)
+	var deaths = GlobalStats.deaths_in_current_level
+	var rating = _calculate_rating(final_time, deaths)
 	
 	win_label.text = "Level bestanden\nZeit: " +str(snapped(final_time, 0.1)) + " Sekunden \nBewertung: " +  rating
 	win_label.visible = true
@@ -51,4 +57,5 @@ func _level_complete():
 	print("Win wird angezeigt")
 	await get_tree().create_timer(4.0).timeout
 	# Zurück zum Hauptmenü (Pfade anpassen!)
+	GlobalStats.deaths_in_current_level = 0
 	get_tree().change_scene_to_file("res://scenes/levelMenu.tscn")

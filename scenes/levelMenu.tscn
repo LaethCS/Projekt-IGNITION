@@ -57,27 +57,35 @@ text = "Level 4"
 
 [node name="level5_button" type="Button" parent="Button-Manager"]
 layout_mode = 0
-offset_left = 377.0
+offset_left = 323.0
 offset_top = 330.0
-offset_right = 452.0
+offset_right = 398.0
 offset_bottom = 397.0
 text = "Level 5"
 
 [node name="level6_button" type="Button" parent="Button-Manager"]
 layout_mode = 0
-offset_left = 542.0
-offset_top = 328.0
-offset_right = 622.0
-offset_bottom = 398.0
+offset_left = 460.0
+offset_top = 329.0
+offset_right = 540.0
+offset_bottom = 399.0
 text = "Level 6"
 
 [node name="level7_button" type="Button" parent="Button-Manager"]
 layout_mode = 0
-offset_left = 708.0
-offset_top = 328.0
-offset_right = 799.0
-offset_bottom = 395.0
+offset_left = 631.0
+offset_top = 330.0
+offset_right = 722.0
+offset_bottom = 397.0
 text = "Level 7"
+
+[node name="handout_button" type="Button" parent="Button-Manager"]
+layout_mode = 0
+offset_left = 775.0
+offset_top = 331.0
+offset_right = 867.0
+offset_bottom = 397.0
+text = "HandOut"
 
 [connection signal="pressed" from="Button-Manager/level1_button" to="." method="_on_level_1_button_pressed"]
 [connection signal="pressed" from="Button-Manager/level1_button" to="." method="_on_button_pressed"]
@@ -87,3 +95,5 @@ text = "Level 7"
 [connection signal="pressed" from="Button-Manager/level5_button" to="." method="_on_level_5_button_pressed"]
 [connection signal="pressed" from="Button-Manager/level6_button" to="." method="_on_level_6_button_pressed"]
 [connection signal="pressed" from="Button-Manager/level7_button" to="." method="_on_level_7_button_pressed"]
+[connection signal="pressed" from="Button-Manager/handout_button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button-Manager/handout_button" to="." method="_on_handout_button_pressed"]

@@ -1,9 +1,9 @@
 [gd_scene load_steps=12 format=3 uid="uid://6w2wajaxov5u"]
 
 [ext_resource type="Script" uid="uid://bdbx8o83411ax" path="res://scripts/player.gd" id="1_3vyb7"]
-[ext_resource type="PackedScene" uid="uid://di8k50fyioxvr" path="res://Assets/GLTF format/astronautB.glb" id="2_g2els"]
-[ext_resource type="AudioStream" uid="uid://bhe8i18pxip5h" path="res://Assets/sounds/feuerloscher-sound-effect_edited.mp3" id="3_qhqgy"]
-[ext_resource type="PackedScene" uid="uid://jt212axfimyk" path="res://Assets/GLTF format/weapon_gun.glb" id="4_dqkch"]
+[ext_resource type="PackedScene" uid="uid://b8bwoyd841e3" path="res://Assets/GLTF format/astronautB.glb" id="2_g2els"]
+[ext_resource type="AudioStream" uid="uid://dtqla4lscmrjo" path="res://Assets/sounds/feuerloscher-sound-effect_edited.mp3" id="3_qhqgy"]
+[ext_resource type="PackedScene" uid="uid://dbpman1vjknci" path="res://Assets/GLTF format/weapon_gun.glb" id="4_dqkch"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u8vuu"]
 

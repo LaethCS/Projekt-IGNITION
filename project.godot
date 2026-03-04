@@ -15,6 +15,10 @@ run/main_scene="uid://l4p42bgdsxho"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GlobalStats="*res://scripts/GlobalStats.gd"
+
 [input]
 
 move_forward={

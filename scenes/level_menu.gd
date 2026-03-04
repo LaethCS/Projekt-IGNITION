@@ -33,3 +33,6 @@ func _on_level_6_button_pressed():
 
 func _on_level_7_button_pressed():
 	get_tree().change_scene_to_file("res://scenes/level_6.tscn")
+	
+func _on_handout_button_pressed():
+	get_tree().change_scene_to_file("res://scenes/handout.tscn")

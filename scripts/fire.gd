@@ -120,6 +120,7 @@ func die():
 func _on_damage_zone_body_entered(body: Node3D) -> void:
 	if body.name == "Player":
 		if (current_health > 0 or is_ember) and not is_dead: 
+			GlobalStats.deaths_in_current_level +=1
 			if body.has_method("show_game_over"):
 				body.show_game_over()
 			
