@@ -44,7 +44,7 @@ func _level_complete():
 	final_time = Time.get_unix_time_from_system() - start_time
 	var rating = _calculate_rating(final_time)
 	
-	win_label.text = "Level bstanden\nZeit: " +str(snapped(final_time, 0.1)) + "s\nBewertung: " +  rating
+	win_label.text = "Level bestanden\nZeit: " +str(snapped(final_time, 0.1)) + " Sekunden \nBewertung: " +  rating
 	win_label.visible = true
 	
 	win_sound.play()
