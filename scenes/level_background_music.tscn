@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://ruw72ou20msr"]
+
+[ext_resource type="AudioStream" uid="uid://3wofho61fhqb" path="res://Assets/sounds/background_music.mp3" id="1_yd722"]
+[ext_resource type="AudioStream" uid="uid://sk713vsmey0i" path="res://Assets/sounds/wind_sound_effect.mp3" id="2_qr6dd"]
+
+[node name="level_background_music" type="Node3D"]
+
+[node name="background_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_yd722")
+volume_db = -20.0
+autoplay = true
+bus = &"Music"
+
+[node name="wind_sound_effect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_qr6dd")
+volume_db = 5.0
+autoplay = true
+bus = &"Wind"

@@ -15,15 +15,20 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Project: IGNITION"
-run/main_scene="uid://0nj17esmy8ie"
-config/features=PackedStringArray("4.6", "Forward Plus")
+run/main_scene="uid://bc4tx2asarwqa"
+config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GlobalStats="*res://scripts/GlobalStats.gd"
+PauseMenu="*res://scenes/pause_menu.tscn"
 
 [global_group]
 
 extinguisher=""
 wind_zone=""
-fire=""
+Fires=""
 npc=""
 
 [input]

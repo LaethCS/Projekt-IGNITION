@@ -1,13 +1,13 @@
-[gd_scene format=3 uid="uid://d3dnc5g6a3nq4"]
+[gd_scene load_steps=31 format=3 uid="uid://d3dnc5g6a3nq4"]
 
 [ext_resource type="Script" uid="uid://cv3cufd2ufc7n" path="res://scripts/fire.gd" id="1_52nqi"]
-[ext_resource type="AudioStream" uid="uid://cc81ai3b2jom4" path="res://scenes/fire_sound.mp3" id="2_theev"]
-[ext_resource type="AudioStream" uid="uid://cot20p7h06gpf" path="res://Assets/sounds/fire_out_sound_effect_boosted.mp3" id="3_g5mbl"]
-[ext_resource type="Texture2D" uid="uid://kvm1gg2ds02s" path="res://scripts/Smoke30Frames_0.png" id="4_10wrr"]
+[ext_resource type="AudioStream" uid="uid://bbwu7cj3aj2b7" path="res://scenes/fire_sound.mp3" id="2_theev"]
+[ext_resource type="AudioStream" uid="uid://c1p7xwq2ulkie" path="res://Assets/sounds/fire_out_sound_effect_boosted.mp3" id="3_g5mbl"]
+[ext_resource type="Texture2D" uid="uid://cauo8xwt6mcfg" path="res://scripts/Smoke30Frames_0.png" id="4_10wrr"]
 [ext_resource type="Gradient" uid="uid://ci06y6k65p0xp" path="res://scripts/Fire.tres" id="4_theev"]
 [ext_resource type="Gradient" uid="uid://vyohyspod1la" path="res://scripts/SmokeGradient.tres" id="5_theev"]
 [ext_resource type="Gradient" path="res://scripts/SparksGradient.tres" id="6_3l77w"]
-[ext_resource type="Texture2D" uid="uid://njfsv7s2wvbp" path="res://scripts/Spark.png" id="7_ajlmw"]
+[ext_resource type="Texture2D" uid="uid://byn4h0netwggk" path="res://scripts/Spark.png" id="7_ajlmw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g5mbl"]
 
@@ -15,14 +15,14 @@
 gradient = ExtResource("4_theev")
 
 [sub_resource type="Curve" id="Curve_ajlmw"]
-_data = [Vector2(0, 0.50561804), 0.0, 0.0, 0, 0, Vector2(0.49324328, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.505618), 0.0, 0.0, 0, 0, Vector2(0.493243, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="CurveTexture" id="CurveTexture_ia3m4"]
 curve = SubResource("Curve_ajlmw")
 
 [sub_resource type="Curve" id="Curve_theev"]
-_data = [Vector2(0, 0.1460675), 0.0, 0.0, 0, 0, Vector2(0.55625, 0.8089888), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.146068), 0.0, 0.0, 0, 0, Vector2(0.55625, 0.808989), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="CurveTexture" id="CurveTexture_3l77w"]
@@ -33,24 +33,24 @@ emission_shape_offset = Vector3(0, -1.425, 0)
 emission_shape_scale = Vector3(1.56, 0.135, 1.57)
 emission_shape = 3
 emission_box_extents = Vector3(1, 1, 1)
-angle_min = -39.99999
-angle_max = 40.00001
+angle_min = -40.0
+angle_max = 40.0
 direction = Vector3(0, 1, 0)
 spread = 10.0
 initial_velocity_min = 1.5
 initial_velocity_max = 3.0
-angular_velocity_min = -20.000015
-angular_velocity_max = 19.999983
+angular_velocity_min = -20.0
+angular_velocity_max = 20.0
 gravity = Vector3(0, 0, 0)
-linear_accel_min = -2.2351742e-06
-linear_accel_max = -2.2351742e-06
+linear_accel_min = -2.23517e-06
+linear_accel_max = -2.23517e-06
 damping_max = 1.0
 scale_min = 0.0
 scale_max = 3.0
 scale_curve = SubResource("CurveTexture_ia3m4")
 color_ramp = SubResource("GradientTexture1D_3l77w")
-hue_variation_min = -2.2351742e-08
-hue_variation_max = 0.049999975
+hue_variation_min = -2.23517e-08
+hue_variation_max = 0.05
 anim_speed_min = 1.0
 anim_speed_max = 1.0
 anim_offset_max = 1.0
@@ -93,19 +93,19 @@ curve = SubResource("Curve_qb48u")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_crqtj"]
 emission_shape = 1
 emission_sphere_radius = 0.3
-angle_min = 1.0728835e-05
-angle_max = 360.00003
+angle_min = 1.07288e-05
+angle_max = 360.0
 direction = Vector3(0, 1, 0)
 spread = 0.0
 initial_velocity_min = 0.5
 initial_velocity_max = 1.0
-angular_velocity_min = -1.6093254e-05
-angular_velocity_max = 39.999985
+angular_velocity_min = -1.60933e-05
+angular_velocity_max = 40.0
 gravity = Vector3(0, 0, 0)
-linear_accel_min = -2.2351742e-06
-linear_accel_max = 1.9999977
-radial_accel_min = -2.2351742e-06
-radial_accel_max = 0.19999775
+linear_accel_min = -2.23517e-06
+linear_accel_max = 2.0
+radial_accel_min = -2.23517e-06
+radial_accel_max = 0.199998
 scale_max = 2.0
 scale_curve = SubResource("CurveTexture_a7qbx")
 color_ramp = SubResource("GradientTexture1D_3ig1c")
@@ -131,7 +131,7 @@ material = SubResource("StandardMaterial3D_i3owy")
 gradient = ExtResource("6_3l77w")
 
 [sub_resource type="Curve" id="Curve_vwb3x"]
-_data = [Vector2(0, 0.49438208), 0.0, 0.0, 0, 0, Vector2(0.5067568, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.494382), 0.0, 0.0, 0, 0, Vector2(0.506757, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="CurveTexture" id="CurveTexture_k1d0p"]
@@ -145,13 +145,13 @@ spread = 40.0
 flatness = 0.24
 initial_velocity_max = 2.0
 gravity = Vector3(0, 0, 0)
-linear_accel_min = -2.2351742e-06
-linear_accel_max = 4.9999976
-tangential_accel_min = -2.2351742e-06
-tangential_accel_max = 4.9999976
+linear_accel_min = -2.23517e-06
+linear_accel_max = 5.0
+tangential_accel_min = -2.23517e-06
+tangential_accel_max = 5.0
 damping_max = 2.0
 scale_min = 0.0
-scale_max = 0.099999994
+scale_max = 0.1
 scale_curve = SubResource("CurveTexture_k1d0p")
 color_ramp = SubResource("GradientTexture1D_61tru")
 sub_emitter_mode = 4
@@ -175,34 +175,36 @@ size = Vector2(0.5, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_theev"]
 
-[node name="Fire" type="Node3D" unique_id=407165043 groups=["fire"]]
+[node name="Fire" type="Node3D" groups=["Fires"]]
 script = ExtResource("1_52nqi")
 
-[node name="fire_sound" type="AudioStreamPlayer3D" parent="." unique_id=1216953258]
+[node name="fire_sound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("2_theev")
+volume_db = -10.0
 unit_size = 7.0
 autoplay = true
 max_distance = 10.0
+bus = &"Fire"
 
-[node name="extinguish_sound" type="AudioStreamPlayer3D" parent="." unique_id=2018180118]
+[node name="extinguish_sound" type="AudioStreamPlayer3D" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("3_g5mbl")
-volume_db = 80.0
+volume_db = -21.0
 unit_size = 29.85
 max_distance = 20.0
 
-[node name="DamageZone" type="Area3D" parent="." unique_id=519626270]
+[node name="DamageZone" type="Area3D" parent="."]
 transform = Transform3D(7.445, 0, 0, 0, 7.445, 0, 0, 0, 7.445, 0, 0, 0)
 collision_layer = 4
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageZone" unique_id=1673072219]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageZone"]
 transform = Transform3D(0.42, 0, 0, 0, 0.42, 0, 0, 0, 0.42, 0, 0, 0)
 shape = SubResource("BoxShape3D_g5mbl")
 
-[node name="Visuals" type="Node3D" parent="." unique_id=411331117]
+[node name="Visuals" type="Node3D" parent="."]
 
-[node name="FireParticles" type="GPUParticles3D" parent="Visuals" unique_id=633348266]
+[node name="FireParticles" type="GPUParticles3D" parent="Visuals"]
 amount = 200
 sub_emitter = NodePath("SparkParticles")
 lifetime = 0.8
@@ -212,7 +214,7 @@ trail_lifetime = 0.8
 process_material = SubResource("ParticleProcessMaterial_tuqhi")
 draw_pass_1 = SubResource("RibbonTrailMesh_sbjtb")
 
-[node name="SmokeParticles" type="GPUParticles3D" parent="Visuals/FireParticles" unique_id=1619143256]
+[node name="SmokeParticles" type="GPUParticles3D" parent="Visuals/FireParticles"]
 amount = 50
 lifetime = 1.5
 randomness = 1.0
@@ -221,7 +223,7 @@ trail_lifetime = 0.8
 process_material = SubResource("ParticleProcessMaterial_crqtj")
 draw_pass_1 = SubResource("QuadMesh_y8ftx")
 
-[node name="SparkParticles" type="GPUParticles3D" parent="Visuals/FireParticles" unique_id=1686230211]
+[node name="SparkParticles" type="GPUParticles3D" parent="Visuals/FireParticles"]
 amount = 80
 sub_emitter = NodePath("../SmokeParticles")
 lifetime = 0.5
@@ -229,13 +231,13 @@ draw_order = 3
 process_material = SubResource("ParticleProcessMaterial_tvwqf")
 draw_pass_1 = SubResource("QuadMesh_jx1dq")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Visuals" unique_id=1572463565]
-light_color = Color(1, 0.49411765, 0.2, 1)
+[node name="OmniLight3D" type="OmniLight3D" parent="Visuals"]
+light_color = Color(1, 0.494118, 0.2, 1)
 light_size = 1.0
 
-[node name="WindDetector" type="Area3D" parent="." unique_id=944610366]
+[node name="WindDetector" type="Area3D" parent="."]
 collision_layer = 0
 collision_mask = 8
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WindDetector" unique_id=1468250959]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WindDetector"]
 shape = SubResource("BoxShape3D_theev")

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://do0uq4sgcb8wl"]
 
-[ext_resource type="Script" uid="uid://cif0ba6shx7fi" path="res://scenes/handout.gd" id="1_j4vjk"]
+[ext_resource type="Script" uid="uid://cif0ba6shx7fi" path="res://scripts/handout.gd" id="1_j4vjk"]
 
 [node name="Handout" type="Control"]
 layout_mode = 3

@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var target_fire: Area3D = null # Welches Feuer soll gelöscht werden?
+@export var target_fire: Node3D = null # Welches Feuer soll gelöscht werden?
 @export var sprinkler_power: float = 30.0 # Wie viel Schaden macht das Wasser?
 
 var is_active: bool = false

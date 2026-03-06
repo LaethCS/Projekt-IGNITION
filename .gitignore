@@ -1,4 +1,8 @@
+# Ignoriert den kompletten Godot 4 Cache (WICHTIG!)
 .godot/
-/import
+!.godot/extension_list.cfg
+
+# Ignoriert temporäre Dateien
 *.tmp
-*.import
+
+# (Die *.import Dateien lassen wir absichtlich durch, die MÜSSEN in Git sein!)
