@@ -1,8 +1,6 @@
 extends Control
 
-# --- DEIN STORY-TEXT ---
-var story_text: String = "Das alte Chemiewerk brennt...\nDer Wind ist unberechenbar und die Zeit wird knapp.\nBringe leere Löscher zum LKW zurück.\n\nDu bist unsere letzte Hoffnung."
-
+var story_text: String = "Kritischer Notfall im orbitalen Außenposten...\nDie künstliche Atmosphäre spielt verrückt – rechne mit starkem Gegenwind!\nLösche die Brände und entsorge leere Löscher im Transporter.\nSobald ein Sektor sicher ist, öffnet sich das Portal zur nächsten Ebene.\n\nViel Glück, Kadett."
 @onready var label = $Label
 var current_char: int = 0
 var text_speed: float = 0.05 # Wie schnell die Buchstaben erscheinen (kleiner = schneller)

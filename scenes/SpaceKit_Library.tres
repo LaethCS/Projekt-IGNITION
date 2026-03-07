@@ -1,4 +1,4 @@
-[gd_resource type="MeshLibrary" format=4 uid="uid://deixplkrgg182"]
+[gd_resource type="MeshLibrary" load_steps=437 format=4 uid="uid://deixplkrgg182"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gtv88"]
 resource_name = "metalDark"
