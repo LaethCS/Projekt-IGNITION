@@ -62,8 +62,8 @@ size_flags_vertical = 1
 autowrap_mode = 3
 
 [node name="LevelUI" type="VBoxContainer" parent="."]
-visible = false
-offset_right = 1152.0
+offset_left = -200.0
+offset_right = 1353.0
 offset_bottom = 648.0
 size_flags_horizontal = 6
 size_flags_vertical = 6

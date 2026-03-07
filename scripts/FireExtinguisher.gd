@@ -7,6 +7,7 @@ extends RigidBody3D
 @export var infinite_ammo: bool = true      # NEU: Unendlich Munition für Level 1-6!
 @export var depletion_rate: float = 10.0    # Amount used per second while spraying
 @export var blowback_strength: float = 2.0  # How fast you are visually "blown back"
+@export var show_tutorial: bool = false # Häkchen im Editor nur bei Level 1 setzen!
 
 # --- STATE ---
 var current_amount: float

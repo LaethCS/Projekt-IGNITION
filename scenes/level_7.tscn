@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bfoo1oqxr27"]
+[gd_scene load_steps=13 format=3 uid="uid://bfoo1oqxr27"]
 
 [ext_resource type="MeshLibrary" uid="uid://deixplkrgg182" path="res://scenes/SpaceKit_Library.tres" id="1_e8vmx"]
 [ext_resource type="Script" uid="uid://ckaffai546c7s" path="res://scripts/level_7.gd" id="1_fsh38"]
@@ -6,16 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://b0y2pg34gv4o3" path="res://scenes/wind_zone.tscn" id="3_uk7qm"]
 [ext_resource type="PackedScene" uid="uid://d2epmyui58ti7" path="res://scenes/wind_particales.tscn" id="4_jw05p"]
 [ext_resource type="PackedScene" uid="uid://bgfe24noch4le" path="res://scenes/fire_extinguisher.tscn" id="5_7tfso"]
-[ext_resource type="ArrayMesh" uid="uid://bu1xlnrbfndf7" path="res://scenes/lowpoly-truck.obj" id="6_36u6r"]
-[ext_resource type="Script" uid="uid://droupftqwfioc" path="res://scenes/FireTruck.gd" id="7_l5pst"]
+[ext_resource type="PackedScene" uid="uid://cal5e1umdyygy" path="res://scenes/lowpoly_truck.tscn" id="7_wu5f3"]
 [ext_resource type="PackedScene" uid="uid://x02ngdy0yrm2" path="res://scenes/Portal.tscn" id="8_ophlp"]
 [ext_resource type="PackedScene" uid="uid://ruw72ou20msr" path="res://scenes/level_background_music.tscn" id="10_e8vmx"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_abjnl"]
-size = Vector3(3.49713, 0.685272, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_wps6d"]
-size = Vector3(4.35938, 0.620605, 0.958984)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5xbjy"]
 
@@ -102,22 +95,9 @@ transform = Transform3D(1, 0, 0, 0, 0.389124, 0.921185, 0, -0.921185, 0.389124, 
 [node name="FireExtinguisher3" parent="Gameplay" instance=ExtResource("5_7tfso")]
 transform = Transform3D(1, 0, 0, 0, 0.658689, 0.752415, 0, -0.752415, 0.658689, 18.7867, 2.30384, 10.5703)
 
-[node name="LowpolyTruck" type="MeshInstance3D" parent="Gameplay"]
+[node name="LowpolyTruck" parent="Gameplay" node_paths=PackedStringArray("portal") instance=ExtResource("7_wu5f3")]
 transform = Transform3D(2.91, 0, 0, 0, 2.91, 0, 0, 0, 2.91, 8.90527, 0.550612, 15.2597)
-mesh = ExtResource("6_36u6r")
-script = ExtResource("7_l5pst")
-
-[node name="DeliveryZone" type="Area3D" parent="Gameplay/LowpolyTruck"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/LowpolyTruck/DeliveryZone"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.934173, 0.811234, 0)
-shape = SubResource("BoxShape3D_abjnl")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Gameplay/LowpolyTruck"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Gameplay/LowpolyTruck/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.457905, 0.132568, -0.0205078)
-shape = SubResource("BoxShape3D_wps6d")
+portal = NodePath("../Portal")
 
 [node name="Portal" parent="Gameplay" instance=ExtResource("8_ophlp")]
 transform = Transform3D(-1.63463, 0, 4.19261, 0, 4.5, 0, -4.19261, 0, -1.63463, 25.723, 0, 11.775)

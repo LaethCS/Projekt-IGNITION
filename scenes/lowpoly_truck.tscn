@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cal5e1umdyygy"]
+
+[ext_resource type="ArrayMesh" uid="uid://bu1xlnrbfndf7" path="res://scenes/lowpoly-truck.obj" id="1_momuj"]
+[ext_resource type="Script" uid="uid://droupftqwfioc" path="res://scripts/FireTruck.gd" id="2_entuy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_abjnl"]
+size = Vector3(3.49713, 0.685272, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wps6d"]
+size = Vector3(4.35938, 0.620605, 0.958984)
+
+[node name="LowpolyTruck" type="MeshInstance3D"]
+transform = Transform3D(2.91, 0, 0, 0, 2.91, 0, 0, 0, 2.91, 0, 0, 0)
+mesh = ExtResource("1_momuj")
+script = ExtResource("2_entuy")
+
+[node name="DeliveryZone" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DeliveryZone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.934173, 0.811234, 0)
+shape = SubResource("BoxShape3D_abjnl")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.457905, 0.132568, -0.0205078)
+shape = SubResource("BoxShape3D_wps6d")

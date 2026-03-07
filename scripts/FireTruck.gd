@@ -1,6 +1,7 @@
 extends Node3D
 
 @export var required_extinguishers: int = 3
+@export var portal: Node3D # NEU: Hier ziehst du das Portal im Godot-Editor rein!
 
 @onready var delivery_zone: Area3D = $DeliveryZone
 
@@ -25,7 +26,7 @@ func _on_body_entered(body: Node) -> void:
 	
 	print("Delivered: ", delivered, "/", required_extinguishers)
 	
-	# Optional: remove extinguisher
+	# Optional: remove extinguisher (Löscher verschwindet, wenn er im LKW landet)
 	body.queue_free()
 	
 	if delivered >= required_extinguishers:
@@ -35,10 +36,6 @@ func _on_body_entered(body: Node) -> void:
 func _win_level():
 	print("YOU WIN 🎉")
 	
-	# Replace with your own win logic:
-	# show UI
-	# load next level
-	# play sound
-	
-	await get_tree().create_timer(1.0).timeout
-	get_tree().change_scene_to_file("res://NextLevel.tscn")
+	if portal:
+		if portal.has_method("activate_portal"): # HIER
+			portal.activate_portal()             # UND HIER

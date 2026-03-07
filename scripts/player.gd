@@ -12,8 +12,10 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 # --- REFERENZEN ---
 @onready var camera = $Camera3D 
 @onready var interact_ray = $Camera3D/RayCast3D
-@onready var blindness_overlay = get_node_or_null("CanvasLayer/BlindnessOverlay")
+#@onready var blindness_overlay = get_node_or_null("CanvasLayer/BlindnessOverlay")
+@onready var blindness_overlay = $CanvasLayer/BlindnessOverlay
 @onready var game_over_text = get_node_or_null("CanvasLayer/GameOverText")
+@onready var tutorial_label = get_node_or_null("CanvasLayer/TutorialLabel")
 
 # --- STATE ---
 var blindness_intensity: float = 0.0
@@ -96,6 +98,22 @@ func _physics_process(delta):
 			blindness_overlay.color.a = blindness_intensity
 		else:
 			blindness_overlay.modulate.a = blindness_intensity
+			
+	# --- TUTORIAL TEXT ANZEIGEN ---
+	if tutorial_label:
+		tutorial_label.visible = false # Standardmäßig unsichtbar
+		
+		# Wenn wir nichts halten und einen Löscher anschauen:
+		if extinguisher == null and interact_ray and interact_ray.is_colliding():
+			var target = interact_ray.get_collider()
+			if target and target.has_method("pick_up") and target.get("show_tutorial") == true:
+				tutorial_label.text = "[E] Aufheben"
+				tutorial_label.visible = true
+				
+		# Wenn wir den Löscher gerade in der Hand halten und er das Tutorial-Häkchen hat:
+		elif extinguisher != null and extinguisher.get("show_tutorial") == true:
+			tutorial_label.text = "[E] Fallenlassen"
+			tutorial_label.visible = true
 
 
 # ============================================================

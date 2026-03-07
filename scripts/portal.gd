@@ -2,41 +2,41 @@ extends Area3D
 
 @export var next_level_path: String = "res://scenes/levelMenu.tscn"
 var is_active: bool = false
+var portal_material: StandardMaterial3D
 
 @onready var mesh = $MeshInstance3D
 @onready var text_label = $Label3D
-# NEU: Wir holen uns die Kollisions-Box der Wand!
 @onready var blocker_col = $BlockerWall/CollisionShape3D 
 
 func _ready():
-	pass
+	is_active = false 
+	
+	# Neues Material für das Portal erstellen (Rot)
+	portal_material = StandardMaterial3D.new()
+	portal_material.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	portal_material.albedo_color = Color(1, 0, 0, 0.8) 
+	portal_material.emission_enabled = true          
+	portal_material.emission = Color(1, 0, 0)
+	portal_material.emission_energy_multiplier = 4.0 
+
+	if mesh:
+		mesh.material_override = portal_material
 
 func activate_portal():
 	is_active = true
-	text_label.text = "Ausgang offen!"
-	text_label.modulate = Color(0, 1, 0) 
 	
-	var mat = mesh.get_active_material(0)
-	if mat:
-		mat.albedo_color = Color(0.0, 1.0, 0.5, 0.5) 
-		mat.emission = Color(0.0, 1.0, 0.5) 
+	if text_label:
+		text_label.text = "Ausgang offen!"
+		text_label.modulate = Color(0, 1, 0) # Grün
 		
-	# NEU: Die feste Wand wird ausgeschaltet! Der Spieler kann durch.
+	if portal_material:
+		# Material auf Grün ändern
+		portal_material.albedo_color = Color(0.0, 1.0, 0.0, 0.8) 
+		portal_material.emission = Color(0.0, 1.0, 0.0) 
+			
 	if blocker_col:
 		blocker_col.set_deferred("disabled", true)
 
 func _on_body_entered(body):
-	# Dieser Text erscheint in der Konsole, sobald IRGENDETWAS das Portal berührt
-	print("Etwas hat das Portal berührt: ", body.name)
-	
-	# Wir prüfen auf "Player" (Achte genau auf die Groß-/Kleinschreibung!)
-	if body.name == "Player":
-		print("Der Spieler ist im Portal!") # Erkennt er den Spieler?
-		
-		if is_active:
-			print("Portal ist aktiv! Wechsle zu: ", next_level_path)
-			var error = get_tree().change_scene_to_file(next_level_path)
-			if error != OK:
-				print("FEHLER: Konnte die Szene nicht laden! Ist der Pfad richtig?")
-		else:
-			print("Portal ist noch blockiert!")
+	if body.name == "Player" and is_active:
+		get_tree().change_scene_to_file(next_level_path)

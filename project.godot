@@ -15,7 +15,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 [application]
 
 config/name="Project: IGNITION"
-run/main_scene="uid://bc4tx2asarwqa"
+run/main_scene="uid://45o6jkq2tkef"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 

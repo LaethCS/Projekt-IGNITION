@@ -16,6 +16,7 @@ emission_enabled = true
 emission = Color(1, 0, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_11uge"]
+resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_b7lbi")
 
 [node name="Portal" type="Area3D"]
@@ -58,7 +59,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1.5)
 shape = SubResource("ConcavePolygonShape3D_plh3y")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.645, 1.01167e-07, 0, -9.73923e-08, 0.67, 0, 0, 0, -0.025, 0.399853, 0.554649, 0.253603)
+transform = Transform3D(0.645, 8.83325e-08, 0, -9.73923e-08, 0.585, 0, 0, 0, -0.025, 0.399853, 0.567628, 0.253603)
 mesh = SubResource("BoxMesh_11uge")
 skeleton = NodePath("../CollisionShape3D")
 
