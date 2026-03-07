@@ -1,4 +1,4 @@
-[gd_resource type="ArrayMesh" load_steps=6 format=4 uid="uid://cdcwrqaxkq1g6"]
+[gd_resource type="ArrayMesh" format=4 uid="uid://cdcwrqaxkq1g6"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kawg7"]
 resource_name = "cabler"
