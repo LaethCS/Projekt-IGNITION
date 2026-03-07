@@ -35,5 +35,4 @@ func _unhandled_input(event):
 			start_game()
 
 func start_game():
-	# HIER DEINEN LEVEL-NAMEN EINTRAGEN!
 	get_tree().change_scene_to_file("res://scenes/level_1.tscn")
