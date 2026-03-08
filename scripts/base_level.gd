@@ -16,7 +16,10 @@ var final_time: float = 0.0
 @onready var win_sound = $WinUI/WinLabel/win_soundeffect 
 
 func _ready():
-	start_time = Time.get_unix_time_from_system()
+	if GlobalStats.deaths_in_current_level == 0:
+		# Frischer Start: Wir merken uns die jetzige Uhrzeit global!
+		GlobalStats.level_start_time = Time.get_unix_time_from_system()
+	start_time = GlobalStats.level_start_time
 	var all_fires = get_tree().get_nodes_in_group("Fires")
 	total_fires = all_fires.size()
 	max_fires = total_fires # Wir merken uns, wie viele es am Anfang waren!
@@ -78,4 +81,3 @@ func _level_complete():
 	if GlobalStats:
 		GlobalStats.deaths_in_current_level = 0
 		
-	# HIER STEHT JETZT KEIN TIMER UND KEIN CHANGE_SCENE MEHR!
