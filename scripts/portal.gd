@@ -17,7 +17,7 @@ func _ready():
 	portal_material.albedo_color = Color(1, 0, 0, 0.8) 
 	portal_material.emission_enabled = true          
 	portal_material.emission = Color(1, 0, 0)
-	portal_material.emission_energy_multiplier = 4.0 
+	portal_material.emission_energy_multiplier = 1.0 
 
 	if mesh:
 		mesh.material_override = portal_material
