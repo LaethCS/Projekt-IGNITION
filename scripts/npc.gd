@@ -5,6 +5,7 @@ extends CharacterBody3D
 # ----------------------
 @export var move_speed: float = 3.5
 @export var spray_range: float = 2.5
+@export var is_talkable: bool = false
 
 # ----------------------
 # STATE
@@ -30,21 +31,20 @@ func _ready():
 	dialogue_area.body_entered.connect(_on_player_enter)
 	
 func _on_player_enter(body):
-	print("sda")
 	if talked:
 		return
 		
-	if body:
+	if is_talkable and body:
 		talked = true
 		start_dialogue()
 		
 func start_dialogue():
 	var dialogue = [
 		"Hey! Gute Arbeit da draußen!",
-		"Du hast das Feuer wirklich schnell unter Kontrolle gebracht.",
+		"Du hast das Feuer wirklich \nwschnell unter Kontrolle gebracht.",
 		"Die Feuerlöscher sind jetzt allerdings leer...",
 		"Was sollen wir mit den leeren Dingern machen?",
-		"Bring sie am besten zum Feuerwehrauto dort drüben."
+		"Bring sie am besten zum Feuerwehrzug dort drüben."
 	]
 
 	dialogueManager.start(dialogue)
@@ -150,7 +150,7 @@ func _use_extinguisher(delta):
 		global_transform.basis = global_transform.basis.slerp(target_basis, delta * 6.0)
 
 	# Spray
-	if extinguisher.has_method("start_spraying"):
+	if extinguisher and extinguisher.has_method("start_spraying"):
 		extinguisher.start_spraying()
 
 	# Check distance

@@ -1,9 +1,12 @@
 extends CanvasLayer
 
-@onready var label = $Panel/Label
+@onready var label = $PanelContainer/MarginContainer/Label
 
 var lines = []
 var index = 0
+
+func _ready():
+	hide()
 
 func start(new_lines):
 

@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://byq8kc6uucsjc" path="res://Assets/GLTF format/Brandschutzzeichen_iso7010_F001_feuerloescher.png" id="6_ophlp"]
 [ext_resource type="Script" uid="uid://droupftqwfioc" path="res://scripts/FireTruck.gd" id="6_wu5f3"]
 [ext_resource type="PackedScene" uid="uid://x02ngdy0yrm2" path="res://scenes/Portal.tscn" id="8_ophlp"]
+[ext_resource type="Texture2D" uid="uid://8qrxgon68c6f" path="res://scenes/9580437_XXL.png" id="8_q4s3e"]
+[ext_resource type="Texture2D" uid="uid://b22pfam7kbowi" path="res://scenes/Feuerloescher-Symbolschild-DIN.jpg" id="9_uk7qm"]
 [ext_resource type="PackedScene" uid="uid://ruw72ou20msr" path="res://scenes/level_background_music.tscn" id="10_e8vmx"]
 [ext_resource type="Script" uid="uid://cxcjwfh5gxhib" path="res://scenes/dialog_ui.gd" id="10_fsh38"]
 [ext_resource type="PackedScene" uid="uid://balun8n66d573" path="res://scenes/win_ui.tscn" id="11_e8vmx"]
@@ -22,6 +24,22 @@ albedo_texture = ExtResource("6_ophlp")
 
 [sub_resource type="QuadMesh" id="QuadMesh_wu5f3"]
 material = SubResource("StandardMaterial3D_ophlp")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uk7qm"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("8_q4s3e")
+
+[sub_resource type="QuadMesh" id="QuadMesh_jw05p"]
+material = SubResource("StandardMaterial3D_uk7qm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jw05p"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("9_uk7qm")
+
+[sub_resource type="QuadMesh" id="QuadMesh_7tfso"]
+material = SubResource("StandardMaterial3D_jw05p")
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5xbjy"]
 sky_top_color = Color(0.17252076, 0.49875325, 0.55157745, 1)
@@ -81,13 +99,28 @@ follow_camera_enabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.519127, 2.5608475, 1.9797332)
 mesh = SubResource("QuadMesh_wu5f3")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Gameplay/MeshInstance3D" unique_id=1665496951]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -5.9350863, 0.19654822, 4.363632)
-mesh = SubResource("QuadMesh_wu5f3")
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Gameplay" unique_id=805079906]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 32.07142, 4.500802, 9.669687)
+mesh = SubResource("QuadMesh_jw05p")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Gameplay/MeshInstance3D/MeshInstance3D" unique_id=1134844786]
-transform = Transform3D(1, 0, 1.7484554e-07, 0, 1, 0, -1.7484554e-07, 0, 1, 3.0870829, 0.5020571, -5.410745)
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Gameplay" unique_id=1665496951]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 15.584041, 2.7573957, 6.3433657)
 mesh = SubResource("QuadMesh_wu5f3")
+skeleton = NodePath("../MeshInstance3D")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Gameplay" unique_id=1134844786]
+transform = Transform3D(-1, 0, -2.6226832e-07, 0, 1, 0, 2.6226832e-07, 0, -1, 12.496958, 3.2594528, 11.754111)
+mesh = SubResource("QuadMesh_wu5f3")
+skeleton = NodePath("../MeshInstance3D3")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Gameplay" unique_id=893664086]
+transform = Transform3D(2.9802322e-08, 0, -1, 0, 1, 0, 1, 0, 2.9802322e-08, 25.934807, 2.8106427, 9.675019)
+mesh = SubResource("QuadMesh_7tfso")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Gameplay" unique_id=1147888866]
+transform = Transform3D(1.0331603e-07, 0, -1, 0, 1, 0, 1, 0, 1.0331603e-07, 31.502718, 2.821795, 9.607269)
+mesh = SubResource("QuadMesh_7tfso")
+skeleton = NodePath("../MeshInstance3D5")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1140219110]
 environment = SubResource("Environment_4nkto")
@@ -138,14 +171,19 @@ data = {
 [node name="DialogueUI" type="CanvasLayer" parent="." unique_id=2068579228]
 script = ExtResource("10_fsh38")
 
-[node name="Panel" type="Panel" parent="DialogueUI" unique_id=2002957134]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="PanelContainer" type="PanelContainer" parent="DialogueUI" unique_id=1671772194]
+offset_left = 119.0
+offset_top = 499.0
+offset_right = 159.0
+offset_bottom = 557.0
 
-[node name="Label" type="Label" parent="DialogueUI/Panel" unique_id=1196956575]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="MarginContainer" type="MarginContainer" parent="DialogueUI/PanelContainer" unique_id=2066849056]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="DialogueUI/PanelContainer/MarginContainer" unique_id=1196956575]
+layout_mode = 2
+theme_override_font_sizes/font_size = 42
 
 [node name="NPC" parent="." unique_id=1365754413 instance=ExtResource("11_q4s3e")]
 transform = Transform3D(-0.15198542, 0, -0.98838276, 0, 1, 0, 0.98838276, 0, -0.15198542, 18.992104, 0.5500002, 11.796196)
+is_talkable = true

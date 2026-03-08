@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bgfe24noch4le"]
+[gd_scene format=3 uid="uid://bgfe24noch4le"]
 
 [ext_resource type="Script" uid="uid://dvwwge4srtenj" path="res://scripts/FireExtinguisher.gd" id="1_h1dxr"]
 [ext_resource type="AudioStream" uid="uid://bhe8i18pxip5h" path="res://Assets/sounds/feuerloscher-sound-effect_edited.mp3" id="2_4pe2v"]
@@ -35,33 +35,34 @@ height = 0.4
 radial_segments = 8
 rings = 4
 
-[node name="FireExtinguisher" type="RigidBody3D" groups=["extinguisher"]]
+[node name="FireExtinguisher" type="RigidBody3D" unique_id=2129853159 groups=["extinguisher"]]
+collision_layer = 17
 script = ExtResource("1_h1dxr")
 show_tutorial = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2144878838]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.141846, 0)
 shape = SubResource("CylinderShape3D_4pe2v")
 
-[node name="ExtinguisherSound" type="AudioStreamPlayer3D" parent="."]
+[node name="ExtinguisherSound" type="AudioStreamPlayer3D" parent="." unique_id=2085098227]
 stream = ExtResource("2_4pe2v")
 volume_db = -23.0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=757502862]
 transform = Transform3D(25, 0, 0, 0, -1.09278e-06, 25, 0, -25, -1.09278e-06, 0, -0.345, 0)
 mesh = ExtResource("2_kkplc")
 metadata/_edit_lock_ = true
 
-[node name="NozzlePosition" type="Node3D" parent="."]
+[node name="NozzlePosition" type="Node3D" parent="." unique_id=1522159469]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.535563, -0.158235)
 
-[node name="FoamParticles" type="GPUParticles3D" parent="NozzlePosition"]
+[node name="FoamParticles" type="GPUParticles3D" parent="NozzlePosition" unique_id=47756020]
 emitting = false
 amount = 400
 process_material = SubResource("ParticleProcessMaterial_385mk")
 draw_pass_1 = SubResource("SphereMesh_4pe2v")
 
-[node name="SprayRay" type="RayCast3D" parent="NozzlePosition"]
+[node name="SprayRay" type="RayCast3D" parent="NozzlePosition" unique_id=2036626676]
 target_position = Vector3(0, 0, -5)
 collision_mask = 4
 collide_with_areas = true
