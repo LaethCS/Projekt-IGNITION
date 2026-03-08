@@ -1,4 +1,4 @@
-[gd_scene format=4 uid="uid://3m8y0l0tswb1"]
+[gd_scene load_steps=24 format=4 uid="uid://3m8y0l0tswb1"]
 
 [ext_resource type="Script" uid="uid://be1i8hujsv5vo" path="res://scripts/npc.gd" id="1_nh2m4"]
 
@@ -501,69 +501,70 @@ height = 2.35266
 size = Vector3(1.44299, 1.29974, 1.03937)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_abqhh"]
-size = Vector3(1, 2.2370605, 1.5404053)
+size = Vector3(1, 2.23706, 1.54041)
 
-[node name="NPC" type="CharacterBody3D" unique_id=1365754413 groups=["npc"]]
+[node name="NPC" type="CharacterBody3D" groups=["npc"]]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 script = ExtResource("1_nh2m4")
 
-[node name="Mesh" type="Node3D" parent="." unique_id=991826114]
+[node name="Mesh" type="Node3D" parent="."]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 
-[node name="armLeft" type="MeshInstance3D" parent="Mesh" unique_id=349946246]
+[node name="armLeft" type="MeshInstance3D" parent="Mesh"]
 transform = Transform3D(0.8584, 0, 0, 0, 0.8584, 0, 0, 0, 0.8584, -0.13, 0.473184, 0)
 mesh = SubResource("ArrayMesh_abqhh")
 skeleton = NodePath("")
 
-[node name="armRight" type="MeshInstance3D" parent="Mesh" unique_id=886852987]
+[node name="armRight" type="MeshInstance3D" parent="Mesh"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.13, 0.473184, 0)
 mesh = SubResource("ArrayMesh_rv78h")
 skeleton = NodePath("")
 
-[node name="body" type="MeshInstance3D" parent="Mesh" unique_id=1999548454]
+[node name="body" type="MeshInstance3D" parent="Mesh"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.223184, 0)
 mesh = SubResource("ArrayMesh_7n8xq")
 skeleton = NodePath("")
 
-[node name="head" type="MeshInstance3D" parent="Mesh" unique_id=1452869567]
+[node name="head" type="MeshInstance3D" parent="Mesh"]
 transform = Transform3D(0.26, 0, 0, 0, 0.26, 0, 0, 0, 0.26, 0, 0.483184, 0)
 mesh = SubResource("ArrayMesh_4wlns")
 skeleton = NodePath("")
 
-[node name="legLeft" type="MeshInstance3D" parent="Mesh" unique_id=571277111]
+[node name="legLeft" type="MeshInstance3D" parent="Mesh"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13, 0.223184, 0)
 mesh = SubResource("ArrayMesh_tl2vt")
 skeleton = NodePath("")
 
-[node name="legRight" type="MeshInstance3D" parent="Mesh" unique_id=967727666]
+[node name="legRight" type="MeshInstance3D" parent="Mesh"]
 transform = Transform3D(0.8584, 0, 0, 0, 0.8584, 0, 0, 0, 0.8584, 0.13, 0.223184, 0)
 mesh = SubResource("ArrayMesh_hwkja")
 skeleton = NodePath("")
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=101474591]
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 avoidance_enabled = true
 radius = 0.6
 neighbor_distance = 3.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1822199419]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.18304, 0)
 shape = SubResource("CapsuleShape3D_0tygy")
 
-[node name="PickupDetector" type="Area3D" parent="." unique_id=1694547140]
+[node name="PickupDetector" type="Area3D" parent="."]
+transform = Transform3D(1.435, 0, 0, 0, 1.435, 0, 0, 0, 1.435, 0, 0, 0)
 collision_layer = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PickupDetector" unique_id=558782139]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PickupDetector"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00494385, 0.652977, -0.633647)
 shape = SubResource("BoxShape3D_nh2m4")
 
-[node name="HoldPosition" type="Node3D" parent="." unique_id=562701457]
+[node name="HoldPosition" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.560612, 1.22411, -0.700761)
 
-[node name="DialogueArea" type="Area3D" parent="." unique_id=862254484]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6967271, 0)
+[node name="DialogueArea" type="Area3D" parent="."]
+transform = Transform3D(3.175, 0, 0, 0, 3.175, 0, 0, 0, 3.175, 0, 0.696727, 0)
 collision_layer = 0
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DialogueArea" unique_id=425216416]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42395025, -0.38116455)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DialogueArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.42395, -0.381165)
 shape = SubResource("BoxShape3D_abqhh")

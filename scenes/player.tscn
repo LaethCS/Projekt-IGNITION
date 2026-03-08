@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://6w2wajaxov5u"]
+[gd_scene load_steps=6 format=3 uid="uid://6w2wajaxov5u"]
 
 [ext_resource type="Script" uid="uid://bdbx8o83411ax" path="res://scripts/player.gd" id="1_3vyb7"]
 [ext_resource type="AudioStream" uid="uid://bhe8i18pxip5h" path="res://Assets/sounds/feuerloscher-sound-effect_edited.mp3" id="3_qhqgy"]
@@ -10,42 +10,42 @@
 [sub_resource type="LabelSettings" id="LabelSettings_qhqgy"]
 font_size = 50
 
-[node name="Player" type="CharacterBody3D" unique_id=655904706]
+[node name="Player" type="CharacterBody3D"]
 collision_layer = 2
 collision_mask = 13
 script = ExtResource("1_3vyb7")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=542371959]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_u8vuu")
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=885506244]
+[node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7, -0.373397)
 
-[node name="RayCast3D" type="RayCast3D" parent="Camera3D" unique_id=1348301507]
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
 target_position = Vector3(0, 0, -5)
 collision_mask = 16
 
-[node name="HoldPosition" type="Node3D" parent="Camera3D" unique_id=383886035]
+[node name="HoldPosition" type="Node3D" parent="Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.385557, -0.732436, -0.735571)
 
-[node name="WindDetector" type="Area3D" parent="." unique_id=2125985385]
+[node name="WindDetector" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.18341, 0)
 collision_layer = 0
 collision_mask = 8
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WindDetector" unique_id=577493707]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WindDetector"]
 shape = SubResource("SphereShape3D_qlg0r")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=269019269]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="BlindnessOverlay" type="ColorRect" parent="CanvasLayer" unique_id=1351836600]
+[node name="BlindnessOverlay" type="ColorRect" parent="CanvasLayer"]
 offset_right = 1171.0
 offset_bottom = 655.0
 mouse_filter = 2
 color = Color(1, 1, 1, 0)
 
-[node name="GameOverText" type="Label" parent="CanvasLayer" unique_id=1598615843]
+[node name="GameOverText" type="Label" parent="CanvasLayer"]
 visible = false
 offset_left = 99.0
 offset_top = 262.0
@@ -56,7 +56,7 @@ text = "DU BIST VERBRANNT! Level startet neu..."
 label_settings = SubResource("LabelSettings_qhqgy")
 horizontal_alignment = 1
 
-[node name="TutorialLabel" type="Label" parent="CanvasLayer" unique_id=865769060]
+[node name="TutorialLabel" type="Label" parent="CanvasLayer"]
 offset_left = 392.0
 offset_top = 552.0
 offset_right = 497.0
@@ -66,13 +66,13 @@ theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 25
 text = "Press E"
 
-[node name="FireCounterLabel" type="Label" parent="CanvasLayer" unique_id=1440017682]
+[node name="FireCounterLabel" type="Label" parent="CanvasLayer"]
 offset_right = 40.0
 offset_bottom = 23.0
 
-[node name="ExtinguisherSound" type="AudioStreamPlayer" parent="." unique_id=747882003]
+[node name="ExtinguisherSound" type="AudioStreamPlayer" parent="."]
 
-[node name="ExtinguisherSound2" type="AudioStreamPlayer" parent="." unique_id=1968304833]
+[node name="ExtinguisherSound2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_qhqgy")
 
 [connection signal="area_entered" from="WindDetector" to="." method="_on_wind_detector_area_entered"]

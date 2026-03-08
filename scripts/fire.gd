@@ -6,7 +6,8 @@ signal fire_extinguished
 # ============================================================ 
 
 @export var max_health: float = 100.0 
-@export var fire_source: Node = null 
+@export var fire_source_path: NodePath
+var fire_source: Node = null 
 @export var auto_heal_rate: float = 0.0 
 @export var can_reignite: bool = false 
 
@@ -50,8 +51,10 @@ var base_velocity: float = 3.0
 func _ready(): 
 	current_health = max_health 
 	
+	if not fire_source_path.is_empty():
+		fire_source = get_node_or_null(fire_source_path)
 	# WICHTIG: Damit der Feuerlöscher das Feuer erkennt!
-	add_to_group("fire")
+	add_to_group("Fires")
 	
 	damage_zone.body_entered.connect(_on_damage_zone_body_entered) 
 	wind_detector.area_entered.connect(_on_wind_entered) 

@@ -90,17 +90,17 @@ metadata/_editor_floor_ = Vector3(0, -1, 0)
 [node name="Player" parent="Gameplay" instance=ExtResource("2_6cvei")]
 transform = Transform3D(0.230695, 0, -0.973026, 0, 1, 0, 0.973026, 0, 0.230695, 50.1905, 3.00297, 4.59667)
 
-[node name="Fire" parent="Gameplay" node_paths=PackedStringArray("fire_source") instance=ExtResource("3_que50")]
+[node name="Fire" parent="Gameplay" instance=ExtResource("3_que50")]
 transform = Transform3D(-2.07061, -0.560011, -3.23886e-07, -0.560011, 2.07061, -8.45593e-08, 3.34729e-07, 2.93271e-09, -2.145, 76.0009, 3.79774, 7.09739)
-fire_source = NodePath("../Fire4")
+fire_source_path = NodePath("../Fire4")
 
-[node name="Fire2" parent="Gameplay" node_paths=PackedStringArray("fire_source") instance=ExtResource("3_que50")]
+[node name="Fire2" parent="Gameplay" instance=ExtResource("3_que50")]
 transform = Transform3D(-2.07061, -0.560011, -3.23886e-07, -0.560011, 2.07061, -8.45593e-08, 3.34729e-07, 2.93271e-09, -2.145, 76.0009, 3.79774, 3.38602)
-fire_source = NodePath("../Fire5")
+fire_source_path = NodePath("../Fire5")
 
-[node name="Fire3" parent="Gameplay" node_paths=PackedStringArray("fire_source") instance=ExtResource("3_que50")]
+[node name="Fire3" parent="Gameplay" instance=ExtResource("3_que50")]
 transform = Transform3D(-2.07061, -0.560011, -3.23886e-07, -0.560011, 2.07061, -8.45593e-08, 3.34729e-07, 2.93271e-09, -2.145, 76.0009, 3.79774, -0.76976)
-fire_source = NodePath("../Fire6")
+fire_source_path = NodePath("../Fire6")
 
 [node name="Fire4" parent="Gameplay" instance=ExtResource("3_que50")]
 transform = Transform3D(-1.78363, -0.335989, -2.74057e-07, -0.335989, 1.78363, -5.07329e-08, 2.78712e-07, 8.76855e-10, -1.815, 71.7714, 2.90504, 7.20279)

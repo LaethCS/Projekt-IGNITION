@@ -150,7 +150,7 @@ func _process_hit(hit_obj: Object) -> void:
 	
 	if hit_obj.has_method("extinguish"):
 		hit_obj.extinguish(extinguish_power)
-	elif hit_obj.get_parent() and hit_obj.get_parent().is_in_group("fire"):
+	elif hit_obj.get_parent() and hit_obj.get_parent().is_in_group("Fires"):
 		hit_obj.get_parent().extinguish(extinguish_power)
 
 # --- WIND CHECK ---
