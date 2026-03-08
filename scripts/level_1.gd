@@ -1,5 +1,10 @@
 extends BaseLevel # Erbt von unserem neuen Mutter-Skript!
 
+func _ready():
+	gold_time = 30.0
+	silver_time = 35.0
+	super()
+
 # Wir tauschen nur die Rechnung aus:
 func _calculate_rating(time: float) -> String:
 	var player = get_tree().root.find_child("Player", true, false)

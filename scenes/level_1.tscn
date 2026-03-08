@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bc4tx2asarwqa"]
+[gd_scene format=3 uid="uid://bc4tx2asarwqa"]
 
 [ext_resource type="Script" uid="uid://b5n0wulp2mk8l" path="res://scripts/level_1.gd" id="1_2y5yt"]
 [ext_resource type="MeshLibrary" uid="uid://deixplkrgg182" path="res://scenes/SpaceKit_Library.tres" id="1_014kd"]
@@ -26,13 +26,13 @@ glow_enabled = true
 glow_bloom = 0.39
 glow_blend_mode = 0
 
-[node name="Level_1" type="Node3D" node_paths=PackedStringArray("level_portal")]
+[node name="Level_1" type="Node3D" unique_id=1699839616 node_paths=PackedStringArray("level_portal")]
 script = ExtResource("1_2y5yt")
 level_portal = NodePath("Gameplay/Portal")
 
-[node name="Grids" type="Node3D" parent="."]
+[node name="Grids" type="Node3D" parent="." unique_id=1024314252]
 
-[node name="testing_room" type="GridMap" parent="Grids"]
+[node name="testing_room" type="GridMap" parent="Grids" unique_id=1496827972]
 transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, -2.38419e-07, -4.76837e-07, 2.38419e-07)
 mesh_library = ExtResource("1_014kd")
 cell_size = Vector3(1, 0.1, 1)
@@ -41,7 +41,7 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, 11, 0)
 
-[node name="ground_and_platform" type="GridMap" parent="Grids"]
+[node name="ground_and_platform" type="GridMap" parent="Grids" unique_id=186966026]
 mesh_library = ExtResource("1_014kd")
 cell_size = Vector3(1, 1, 1)
 data = {
@@ -49,7 +49,7 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, 8, 0)
 
-[node name="walls_and_buildings" type="GridMap" parent="Grids"]
+[node name="walls_and_buildings" type="GridMap" parent="Grids" unique_id=1082056705]
 transform = Transform3D(5.58, 0, 0, 0, 5.58, 0, 0, 0, 5.58, 0, 0, 0)
 mesh_library = ExtResource("1_014kd")
 cell_size = Vector3(0.565, 0.065, 0.495)
@@ -58,7 +58,7 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, 24, 0)
 
-[node name="objects" type="GridMap" parent="Grids"]
+[node name="objects" type="GridMap" parent="Grids" unique_id=365564409]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 mesh_library = ExtResource("1_014kd")
 cell_size = Vector3(1, 0.305, 0.6)
@@ -67,7 +67,7 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, 1, 0)
 
-[node name="testing_room_walls" type="GridMap" parent="Grids"]
+[node name="testing_room_walls" type="GridMap" parent="Grids" unique_id=24656840]
 transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 2.775, 4.325, -2.895)
 mesh_library = ExtResource("1_014kd")
 cell_size = Vector3(1, 1.13, 0.785)
@@ -76,57 +76,57 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
-[node name="Gameplay" type="Node3D" parent="."]
+[node name="Gameplay" type="Node3D" parent="." unique_id=1999155814]
 
-[node name="Player" parent="Gameplay" instance=ExtResource("2_5xbjy")]
+[node name="Player" parent="Gameplay" unique_id=1783764784 instance=ExtResource("2_5xbjy")]
 transform = Transform3D(-0.719885, 0, -0.694093, 0, 1, 0, 0.694093, 0, -0.719885, 41.4706, 3.00297, 12.1327)
 
-[node name="Fire" parent="Gameplay" instance=ExtResource("3_4nkto")]
+[node name="Fire" parent="Gameplay" unique_id=282171000 instance=ExtResource("3_4nkto")]
 transform = Transform3D(-1.66, 0, -2.50653e-07, 0, 1.66, 0, 2.50653e-07, 0, -1.66, 84.7161, 1.99628, 33.8773)
 
-[node name="Fire2" parent="Gameplay" instance=ExtResource("3_4nkto")]
+[node name="Fire2" parent="Gameplay" unique_id=1364353983 instance=ExtResource("3_4nkto")]
 transform = Transform3D(-2.185, 0, -3.29926e-07, 0, 2.185, 0, 3.29926e-07, 0, -2.185, 66.3054, 4.84228, 29.7835)
 
-[node name="Fire3" parent="Gameplay" instance=ExtResource("3_4nkto")]
+[node name="Fire3" parent="Gameplay" unique_id=1344265229 instance=ExtResource("3_4nkto")]
 transform = Transform3D(-1.63, 0, -2.46123e-07, 0, 1.63, 0, 2.46123e-07, 0, -1.63, 68.1554, 2.76808, 13.6984)
 
-[node name="Fire4" parent="Gameplay" instance=ExtResource("3_4nkto")]
+[node name="Fire4" parent="Gameplay" unique_id=360791066 instance=ExtResource("3_4nkto")]
 transform = Transform3D(-1.19455, -1.07903, -1.21201, 0.556792, 1.14108, -1.56465, 1.52422, -1.26248, -0.378306, 44.4591, 2.46775, 28.2556)
 
-[node name="WindZone" parent="Gameplay" instance=ExtResource("4_fcfvj")]
+[node name="WindZone" parent="Gameplay" unique_id=188414080 instance=ExtResource("4_fcfvj")]
 transform = Transform3D(-1.37053e-06, 0, 121.161, 0, 15.347, 0, -31.354, 0, -5.29612e-06, 72.449, 3.385, 25.4981)
 wind_direction = Vector3(-1, 0, 0)
 wind_strength = 5.0
 
-[node name="wind_particales" parent="Gameplay" instance=ExtResource("5_4nkto")]
+[node name="wind_particales" parent="Gameplay" unique_id=2007559516 instance=ExtResource("5_4nkto")]
 transform = Transform3D(-2.28829e-07, 0, 11.44, 0, 2.975, 0, -5.235, 0, -5.00058e-07, 84.3025, 2.93085, 21.9745)
 
-[node name="wind_particales2" parent="Gameplay" instance=ExtResource("5_4nkto")]
+[node name="wind_particales2" parent="Gameplay" unique_id=926967976 instance=ExtResource("5_4nkto")]
 transform = Transform3D(-2.28829e-07, 0, 11.44, 0, 2.975, 0, -5.235, 0, -5.00058e-07, 84.3025, 2.93085, 33.2119)
 
-[node name="wind_particales3" parent="Gameplay" instance=ExtResource("5_4nkto")]
+[node name="wind_particales3" parent="Gameplay" unique_id=1909684068 instance=ExtResource("5_4nkto")]
 transform = Transform3D(-2.28829e-07, 0, 11.44, 0, 2.975, 0, -5.235, 0, -5.00058e-07, 84.3025, 2.93085, 11.2222)
 
-[node name="FireExtinguisher" parent="Gameplay" instance=ExtResource("6_e3sih")]
+[node name="FireExtinguisher" parent="Gameplay" unique_id=1874431485 instance=ExtResource("6_e3sih")]
 transform = Transform3D(-0.981597, 0, -0.190963, 0, 1, 0, 0.190963, 0, -0.981597, 42.663, 1.54361, 18.1573)
 
-[node name="Portal" parent="Gameplay" instance=ExtResource("3_go7sj")]
+[node name="Portal" parent="Gameplay" unique_id=465637462 instance=ExtResource("3_go7sj")]
 transform = Transform3D(4.07226, 0, 1.91487, 0, 4.5, 0, -1.91487, 0, 4.07226, 38.8127, 0.55, 11.0254)
 next_level_path = "res://scenes/level_2.tscn"
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1222939482]
 environment = SubResource("Environment_4nkto")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=855580668]
 transform = Transform3D(0.902367, 0.371743, 0.218039, -0.430968, 0.77836, 0.456533, 0, -0.505928, 0.862576, 0, 25.4245, -0.912609)
 shadow_enabled = true
 
-[node name="level_background_music" parent="." instance=ExtResource("9_2y5yt")]
+[node name="level_background_music" parent="." unique_id=1841985982 instance=ExtResource("9_2y5yt")]
 
-[node name="WinUI" parent="." instance=ExtResource("11_2os1m")]
+[node name="WinUI" parent="." unique_id=45364594 instance=ExtResource("11_2os1m")]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1596535721]
 
-[node name="FireCounterLabel" type="Label" parent="CanvasLayer"]
+[node name="FireCounterLabel" type="Label" parent="CanvasLayer" unique_id=1944008368]
 offset_right = 40.0
 offset_bottom = 23.0

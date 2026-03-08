@@ -1,27 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://balun8n66d573"]
+[gd_scene format=3 uid="uid://balun8n66d573"]
 
 [ext_resource type="AudioStream" uid="uid://cygvqkko6xafu" path="res://Assets/sounds/win_soundeffect.mp3" id="1_j84ao"]
 
-[node name="WinUI" type="CanvasLayer"]
+[node name="WinUI" type="CanvasLayer" unique_id=90414087]
 
-[node name="WinLabel" type="Label" parent="."]
+[node name="WinLabel" type="Label" parent="." unique_id=1754317327]
 visible = false
 z_index = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -65.5
-offset_top = -11.5
-offset_right = 65.5
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 50
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -408.0
+offset_bottom = 69.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 20
 text = "Level bestanden!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="win_soundeffect" type="AudioStreamPlayer" parent="WinLabel"]
+[node name="win_soundeffect" type="AudioStreamPlayer" parent="WinLabel" unique_id=2027251288]
 stream = ExtResource("1_j84ao")
