@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cal5e1umdyygy"]
+[gd_scene format=3 uid="uid://cal5e1umdyygy"]
 
 [ext_resource type="ArrayMesh" uid="uid://bu1xlnrbfndf7" path="res://scenes/lowpoly-truck.obj" id="1_momuj"]
 [ext_resource type="Script" uid="uid://droupftqwfioc" path="res://scripts/FireTruck.gd" id="2_entuy"]

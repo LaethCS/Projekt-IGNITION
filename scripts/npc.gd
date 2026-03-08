@@ -19,8 +19,35 @@ var state: String = "IDLE"
 @onready var nav: NavigationAgent3D = $NavigationAgent3D
 @onready var pickup_detector: Area3D = $PickupDetector
 
+@onready var dialogue_area = $DialogueArea
+@onready var dialogueManager = get_tree().current_scene.get_node("DialogueUI")
+
+var talked := false
+
 func _ready():
 	pickup_detector.body_entered.connect(_on_pickup_detector_entered)
+	
+	dialogue_area.body_entered.connect(_on_player_enter)
+	
+func _on_player_enter(body):
+	print("sda")
+	if talked:
+		return
+		
+	if body:
+		talked = true
+		start_dialogue()
+		
+func start_dialogue():
+	var dialogue = [
+		"Hey! Gute Arbeit da draußen!",
+		"Du hast das Feuer wirklich schnell unter Kontrolle gebracht.",
+		"Die Feuerlöscher sind jetzt allerdings leer...",
+		"Was sollen wir mit den leeren Dingern machen?",
+		"Bring sie am besten zum Feuerwehrauto dort drüben."
+	]
+
+	dialogueManager.start(dialogue)
 
 # --- PICKUP DETECTOR SIGNAL ---
 func _on_pickup_detector_entered(body: Node) -> void:
