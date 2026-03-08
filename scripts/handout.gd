@@ -7,4 +7,4 @@ func _ready():
 
 
 func _on_zurück_button_pressed():
-		get_tree().change_scene_to_file("res://scenes/levelMenu.tscn")
+		get_tree().change_scene_to_file("res://scenes/pause_menu.tscn")

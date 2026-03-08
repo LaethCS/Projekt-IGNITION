@@ -17,42 +17,97 @@ offset_right = 1157.0
 offset_bottom = 642.0
 
 [node name="MainUI" type="HBoxContainer" parent="."]
-offset_right = 1152.0
-offset_bottom = 640.0
-
-[node name="ButtonSpalte" type="VBoxContainer" parent="MainUI"]
-layout_mode = 2
+offset_left = 64.0
+offset_top = 8.0
+offset_right = 1096.0
+offset_bottom = 632.0
 size_flags_horizontal = 6
 size_flags_vertical = 4
 theme_override_constants/separation = 30
 
+[node name="ButtonSpalte" type="VBoxContainer" parent="MainUI"]
+layout_mode = 2
+size_flags_horizontal = 15
+size_flags_vertical = 4
+theme_override_constants/separation = 30
+
 [node name="BtnResume" type="Button" parent="MainUI/ButtonSpalte"]
+visible = false
 custom_minimum_size = Vector2(410, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Weiter"
 
 [node name="BtnLevels" type="Button" parent="MainUI/ButtonSpalte"]
+visible = false
 custom_minimum_size = Vector2(410, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Levelauswahl"
 
 [node name="BtnAudio" type="Button" parent="MainUI/ButtonSpalte"]
+visible = false
 custom_minimum_size = Vector2(410, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Audio"
 
-[node name="BtnExit" type="Button" parent="MainUI/ButtonSpalte"]
-custom_minimum_size = Vector2(410, 100)
+[node name="HBoxContainer" type="HBoxContainer" parent="MainUI/ButtonSpalte"]
+layout_mode = 2
+
+[node name="BtnExit" type="Button" parent="MainUI/ButtonSpalte/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(277.69, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
-text = "Spiel beenden"
+text = "Beended"
+
+[node name="BtnAbout" type="Button" parent="MainUI/ButtonSpalte/HBoxContainer"]
+custom_minimum_size = Vector2(277.69, 100)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "About
+"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MainUI/ButtonSpalte/HBoxContainer/BtnAbout"]
+offset_left = 16.0
+offset_top = -238.0
+offset_right = 983.0
+offset_bottom = 334.0
+bbcode_enabled = true
+text = "[center][b]MISSION: INFERNO PROTOKOLL[/b][/center]
+
+[b]Die Story:[/b]
+Ein kritischer Notfall hat die orbitale Forschungsstation lahmgelegt. Brände breiten sich aus und das Lebenserhaltungssystem ist defekt, was zu gefährlichen, unberechenbaren Stürmen in den Gängen führt. Du bist der letzte Kadett vor Ort. Deine Mission: Lösche das Feuer, recycle leere Löscher vorschriftsmäßig im Transport-Rover und erreiche das Portal, um in den nächsten Sektor vorzurücken.
+
+[b]Überlebenstipps (Gameplay):[/b]
+• [b]Gegenwind ist gefährlich:[/b] Wenn du gegen den Sturm sprühst, bläst dir der Schaum ins Gesicht und der Rückstoß wirft dich zurück! Achte auf deine Umgebung.
+• [b]Regel 7 beachten:[/b] Leere Feuerlöscher gehören nicht auf den Boden. Wirf sie auf die Ladefläche des Rovers, um das Portal zu aktivieren.
+
+[b]Steuerung:[/b]
+• [b][ W ][ A ][ S ][ D ][/b] - Bewegen
+• [b][ Leertaste ][/b] - Springen
+• [b][ E ][/b] - Feuerlöscher aufheben / fallen lassen
+• [b][ Linke Maustaste ][/b] - Feuerlöscher abfeuern
+
+[b]Credits:[/b]
+Dieses Spiel entstand als Hochschulprojekt. 
+Entwickelt von: [i]Laeth, Majid, Serhat, Tim[/i]
+3D-Assets: [i]Kenney Space Kit[/i]"
+
+[node name="BtnBack" type="Button" parent="MainUI/ButtonSpalte/HBoxContainer/BtnAbout"]
+custom_minimum_size = Vector2(0.255, 0)
+layout_mode = 0
+offset_left = 768.0
+offset_top = 186.0
+offset_right = 992.895
+offset_bottom = 290.0
+theme_override_font_sizes/font_size = 31
+text = "Zurück"
 
 [node name="InfoBox" type="PanelContainer" parent="MainUI"]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 15
 size_flags_vertical = 4
 
 [node name="LevelText" type="Label" parent="MainUI/InfoBox"]
@@ -61,64 +116,73 @@ layout_mode = 2
 size_flags_vertical = 1
 autowrap_mode = 3
 
-[node name="LevelUI" type="VBoxContainer" parent="."]
-offset_left = -200.0
-offset_right = 1353.0
-offset_bottom = 648.0
-size_flags_horizontal = 6
-size_flags_vertical = 6
-theme_override_constants/separation = 15
+[node name="LevelUI" type="HBoxContainer" parent="."]
+visible = false
+offset_left = 280.0
+offset_top = 88.0
+offset_right = 721.0
+offset_bottom = 458.0
+scale = Vector2(1.385, 1.385)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 50
 
-[node name="BtnLvl1" type="Button" parent="LevelUI"]
+[node name="Lvl1234" type="VBoxContainer" parent="LevelUI"]
+layout_mode = 2
+
+[node name="BtnLvl1" type="Button" parent="LevelUI/Lvl1234"]
 custom_minimum_size = Vector2(181.225, 51.63)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 2
 text = "Level 1"
 
-[node name="BtnLvl2" type="Button" parent="LevelUI"]
-custom_minimum_size = Vector2(181.225, 51.63)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 2
-text = "Level 2"
-
-[node name="BtnLvl3" type="Button" parent="LevelUI"]
+[node name="BtnLvl3" type="Button" parent="LevelUI/Lvl1234"]
 custom_minimum_size = Vector2(181.225, 51.63)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 2
 text = "Level 3"
 
-[node name="BtnLvl4" type="Button" parent="LevelUI"]
-custom_minimum_size = Vector2(181.225, 51.63)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 2
-text = "Level 4"
-
-[node name="BtnLvl5" type="Button" parent="LevelUI"]
+[node name="BtnLvl5" type="Button" parent="LevelUI/Lvl1234"]
 custom_minimum_size = Vector2(181.225, 51.63)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 2
 text = "Level 5"
 
-[node name="BtnLvl6" type="Button" parent="LevelUI"]
-custom_minimum_size = Vector2(181.225, 51.63)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 2
-text = "Level 6"
-
-[node name="BtnLvl7" type="Button" parent="LevelUI"]
+[node name="BtnLvl7" type="Button" parent="LevelUI/Lvl1234"]
 custom_minimum_size = Vector2(181.225, 51.63)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 2
 text = "Level 7"
 
-[node name="BtnBackLevel" type="Button" parent="LevelUI"]
+[node name="Lvl567AndBackBtn" type="VBoxContainer" parent="LevelUI"]
+layout_mode = 2
+
+[node name="BtnLvl2" type="Button" parent="LevelUI/Lvl567AndBackBtn"]
+custom_minimum_size = Vector2(181.225, 51.63)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+text = "Level 2"
+
+[node name="BtnLvl4" type="Button" parent="LevelUI/Lvl567AndBackBtn"]
+custom_minimum_size = Vector2(181.225, 51.63)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+text = "Level 4"
+
+[node name="BtnLvl6" type="Button" parent="LevelUI/Lvl567AndBackBtn"]
+custom_minimum_size = Vector2(181.225, 51.63)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+text = "Level 6"
+
+[node name="BtnBackLevel" type="Button" parent="LevelUI/Lvl567AndBackBtn"]
 custom_minimum_size = Vector2(181.225, 51.63)
 layout_mode = 2
 size_flags_horizontal = 4
