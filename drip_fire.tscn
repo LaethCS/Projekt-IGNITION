@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://dxqrk4fevkisp"]
+
+[ext_resource type="PackedScene" uid="uid://d3dnc5g6a3nq4" path="res://scenes/fire.tscn" id="1_dn5vi"]
+[ext_resource type="Texture2D" uid="uid://cauo8xwt6mcfg" path="res://scripts/Smoke30Frames_0.png" id="2_6c0wk"]
+
+[sub_resource type="Gradient" id="Gradient_6c0wk"]
+offsets = PackedFloat32Array(0, 0.236287, 0.28692, 0.329114, 0.9897959, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 0.28125, 0, 1, 1, 0.962646, 0.402344, 0.990493, 1, 0.140625, 0, 0.998312, 0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_02g48"]
+gradient = SubResource("Gradient_6c0wk")
+
+[sub_resource type="Curve" id="Curve_6c0wk"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.75581396, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_02g48"]
+curve = SubResource("Curve_6c0wk")
+
+[sub_resource type="Curve" id="Curve_02g48"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 2), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveTexture" id="CurveTexture_i0nem"]
+curve = SubResource("Curve_02g48")
+
+[sub_resource type="Curve" id="Curve_i0nem"]
+_data = [Vector2(0, 0.505618), 0.0, 0.0, 0, 0, Vector2(0.493243, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_pfyv7"]
+curve = SubResource("Curve_i0nem")
+
+[sub_resource type="Curve" id="Curve_b0pgx"]
+_data = [Vector2(0, 0.146068), 0.0, 0.0, 0, 0, Vector2(0.55625, 0.808989), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_4eihf"]
+curve = SubResource("Curve_b0pgx")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5snrm"]
+emission_shape_scale = Vector3(0.2, 0.2, 0.2)
+angle_min = -40.0
+angle_max = 40.0
+direction = Vector3(0, 0, 1)
+spread = 0.0
+initial_velocity_min = 0.5
+initial_velocity_max = 1.0
+angular_velocity_min = -20.0
+angular_velocity_max = 20.0
+damping_min = 5.0
+damping_max = 20.0
+damping_curve = SubResource("CurveTexture_02g48")
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_pfyv7")
+color_ramp = SubResource("GradientTexture1D_02g48")
+emission_curve = SubResource("CurveTexture_i0nem")
+hue_variation_min = -2.23517e-08
+hue_variation_max = 0.05
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+anim_offset_max = 1.0
+turbulence_influence_over_life = SubResource("CurveTexture_4eihf")
+collision_mode = 1
+collision_friction = 0.6
+collision_bounce = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_02g48"]
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_6c0wk")
+billboard_mode = 3
+particles_anim_h_frames = 5
+particles_anim_v_frames = 6
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_i0nem"]
+material = SubResource("StandardMaterial3D_02g48")
+size = Vector2(0.3, 0.3)
+
+[node name="DripFire" unique_id=1782931919 instance=ExtResource("1_dn5vi")]
+
+[node name="FireParticles" parent="Visuals" parent_id_path=PackedInt32Array(554918783) index="0" unique_id=2065218336]
+transform = Transform3D(1, 0, 0, 0, -1, -8.742278e-08, 0, 8.742278e-08, -1, 0, 0, 0)
+lifetime = 1.06
+trail_enabled = false
+trail_lifetime = 0.14
+process_material = SubResource("ParticleProcessMaterial_5snrm")
+draw_pass_1 = SubResource("QuadMesh_i0nem")
+
+[node name="SmokeParticles" parent="Visuals/FireParticles" index="0" unique_id=489682741]
+trail_lifetime = 0.55

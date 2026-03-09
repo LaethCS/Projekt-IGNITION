@@ -1,6 +1,10 @@
 extends Node3D 
 signal fire_extinguished 
 
+@export_range(0.0, 20.0, 0.1) var velocity_min := 3.0
+@export_range(0.0, 20.0, 0.1) var velocity_max := 6.0
+@export var velocity_direction: Vector3 = Vector3.UP
+
 # ============================================================ 
 # CONFIG 
 # ============================================================ 
@@ -10,6 +14,7 @@ signal fire_extinguished
 var fire_source: Node = null 
 @export var auto_heal_rate: float = 0.0 
 @export var can_reignite: bool = false 
+@export var light_power: float = 20 
 
 # Wind influence multiplier 
 @export var wind_direction_strength: float = 0.4 
@@ -65,6 +70,10 @@ func _ready():
 		particles.process_material = particles.process_material.duplicate() 
 	var mat = particles.process_material 
 	if mat: 
+		mat.direction = velocity_direction.normalized()
+		mat.initial_velocity_min = velocity_min
+		mat.initial_velocity_max = velocity_max
+		
 		base_direction = mat.direction 
 		base_velocity = mat.initial_velocity_min 
 
@@ -73,6 +82,7 @@ func _ready():
 # ============================================================ 
 
 func _process(delta): 
+	#print(light.light_energy)
 
 	if is_dead: 
 		return 
@@ -140,7 +150,8 @@ func _try_enter_ember_or_die():
 		is_ember = true 
 		ember_timer = 0.0 
 		particles.emitting = false 
-		light.light_energy = 0.2 
+		light.light_energy = 2
+		print(light.light_energy)
 
 		if fire_sound.playing: 
 			fire_sound.stop() 
@@ -177,7 +188,6 @@ func _reignite():
 # ============================================================ 
 
 func _handle_regeneration(delta): 
-
 	if is_ember: 
 		return 
 
@@ -249,12 +259,13 @@ func _handle_wind(delta):
 
 func _update_visuals(): 
 	var percent = clamp(current_health / max_health, 0.0, 1.0) 
-	light.light_energy = percent * 3.0 
+	light.light_energy = percent * light_power
 	particles.amount_ratio = percent 
 
 func _flicker_light(): 
 	if light.visible: 
 		light.light_energy += randf() * 0.2 
+	_update_visuals()
 
 
 # ============================================================ 

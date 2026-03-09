@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://phvif6khia0c"]
+[gd_scene format=3 uid="uid://phvif6khia0c"]
 
 [ext_resource type="Script" uid="uid://bp226wu3mj6wf" path="res://scripts/pause_menu.gd" id="1_myx47"]
 [ext_resource type="Shader" uid="uid://ci6k5dx05tlax" path="res://shaders/backgroundShader.gdshader" id="1_n87rw"]
@@ -7,16 +7,16 @@
 shader = ExtResource("1_n87rw")
 shader_parameter/blur_amount = 2.5
 
-[node name="PauseMenu" type="CanvasLayer"]
+[node name="PauseMenu" type="CanvasLayer" unique_id=286814713]
 process_mode = 3
 script = ExtResource("1_myx47")
 
-[node name="BlurBackground" type="ColorRect" parent="."]
+[node name="BlurBackground" type="ColorRect" parent="." unique_id=1639858949]
 material = SubResource("ShaderMaterial_myx47")
 offset_right = 1157.0
 offset_bottom = 642.0
 
-[node name="MainUI" type="HBoxContainer" parent="."]
+[node name="MainUI" type="HBoxContainer" parent="." unique_id=653274187]
 offset_left = 64.0
 offset_top = 8.0
 offset_right = 1096.0
@@ -25,54 +25,54 @@ size_flags_horizontal = 6
 size_flags_vertical = 4
 theme_override_constants/separation = 30
 
-[node name="ButtonSpalte" type="VBoxContainer" parent="MainUI"]
+[node name="ButtonSpalte" type="VBoxContainer" parent="MainUI" unique_id=2132080438]
 layout_mode = 2
 size_flags_horizontal = 15
 size_flags_vertical = 4
 theme_override_constants/separation = 30
 
-[node name="BtnResume" type="Button" parent="MainUI/ButtonSpalte"]
+[node name="BtnResume" type="Button" parent="MainUI/ButtonSpalte" unique_id=19936324]
 custom_minimum_size = Vector2(410, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Weiter"
 
-[node name="BtnLevels" type="Button" parent="MainUI/ButtonSpalte"]
+[node name="BtnLevels" type="Button" parent="MainUI/ButtonSpalte" unique_id=1521957629]
 visible = false
 custom_minimum_size = Vector2(410, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Levelauswahl"
 
-[node name="BtnAudio" type="Button" parent="MainUI/ButtonSpalte"]
+[node name="BtnAudio" type="Button" parent="MainUI/ButtonSpalte" unique_id=252713466]
 visible = false
 custom_minimum_size = Vector2(410, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Audio"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MainUI/ButtonSpalte"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MainUI/ButtonSpalte" unique_id=407887070]
 layout_mode = 2
 
-[node name="BtnExit" type="Button" parent="MainUI/ButtonSpalte/HBoxContainer"]
+[node name="BtnExit" type="Button" parent="MainUI/ButtonSpalte/HBoxContainer" unique_id=404012278]
 custom_minimum_size = Vector2(277.69, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Beended"
 
-[node name="BtnAbout" type="Button" parent="MainUI/ButtonSpalte/HBoxContainer"]
+[node name="BtnAbout" type="Button" parent="MainUI/ButtonSpalte/HBoxContainer" unique_id=1394598411]
 custom_minimum_size = Vector2(277.69, 100)
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "About
 "
 
-[node name="RichTextLabel" type="RichTextLabel" parent="MainUI/ButtonSpalte/HBoxContainer/BtnAbout"]
+[node name="RichTextLabel" type="RichTextLabel" parent="MainUI/ButtonSpalte/HBoxContainer/BtnAbout" unique_id=2053117098]
 layout_mode = 0
-offset_left = 16.0
-offset_top = -238.0
-offset_right = 983.0
-offset_bottom = 334.0
+offset_left = -247.0
+offset_top = -302.0
+offset_right = 716.0
+offset_bottom = 278.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 bbcode_enabled = true
@@ -94,30 +94,31 @@ Ein kritischer Notfall hat die orbitale Forschungsstation lahmgelegt. Brände br
 [b]Credits:[/b]
 Dieses Spiel entstand als Hochschulprojekt. 
 Entwickelt von: [i]Laeth, Majid, Serhat, Tim[/i]
-3D-Assets: [i]Kenney Space Kit[/i]"
+3D-Assets: [i]Kenney Space Kit[/i], \"Low-poly Fire extinguisher (free)\" (https://skfb.ly/oAxJR) by szaw
+Sound-Assets: Uwa!! So Temperate♫ - Toby Fox, https://www.epidemicsound.com/sound-effects/tracks/3f1910d6-3ff5-4de2-9a00-1651927eb111/, "
 
-[node name="BtnBack" type="Button" parent="MainUI/ButtonSpalte/HBoxContainer/BtnAbout"]
+[node name="BtnBack" type="Button" parent="MainUI/ButtonSpalte/HBoxContainer/BtnAbout" unique_id=1969962512]
 custom_minimum_size = Vector2(0.255, 0)
 layout_mode = 0
-offset_left = 768.0
-offset_top = 186.0
-offset_right = 992.895
-offset_bottom = 290.0
+offset_left = 531.0
+offset_top = 129.0
+offset_right = 755.895
+offset_bottom = 233.0
 theme_override_font_sizes/font_size = 31
 text = "Zurück"
 
-[node name="InfoBox" type="PanelContainer" parent="MainUI"]
+[node name="InfoBox" type="PanelContainer" parent="MainUI" unique_id=2117370657]
 layout_mode = 2
 size_flags_horizontal = 15
 size_flags_vertical = 4
 
-[node name="LevelText" type="Label" parent="MainUI/InfoBox"]
+[node name="LevelText" type="Label" parent="MainUI/InfoBox" unique_id=1661793914]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 size_flags_vertical = 1
 autowrap_mode = 3
 
-[node name="LevelUI" type="HBoxContainer" parent="."]
+[node name="LevelUI" type="HBoxContainer" parent="." unique_id=432056101]
 visible = false
 offset_left = 280.0
 offset_top = 88.0
@@ -128,86 +129,86 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 50
 
-[node name="Lvl1234" type="VBoxContainer" parent="LevelUI"]
+[node name="Lvl1234" type="VBoxContainer" parent="LevelUI" unique_id=2425802]
 layout_mode = 2
 
-[node name="BtnLvl1" type="Button" parent="LevelUI/Lvl1234"]
+[node name="BtnLvl1" type="Button" parent="LevelUI/Lvl1234" unique_id=1492379836]
 custom_minimum_size = Vector2(181.225, 51.63)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 2
 text = "Level 1"
 
-[node name="BtnLvl3" type="Button" parent="LevelUI/Lvl1234"]
+[node name="BtnLvl3" type="Button" parent="LevelUI/Lvl1234" unique_id=2137987125]
 custom_minimum_size = Vector2(181.225, 51.63)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 2
 text = "Level 3"
 
-[node name="BtnLvl5" type="Button" parent="LevelUI/Lvl1234"]
+[node name="BtnLvl5" type="Button" parent="LevelUI/Lvl1234" unique_id=1698048508]
 custom_minimum_size = Vector2(181.225, 51.63)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 2
 text = "Level 5"
 
-[node name="BtnLvl7" type="Button" parent="LevelUI/Lvl1234"]
+[node name="BtnLvl7" type="Button" parent="LevelUI/Lvl1234" unique_id=1340970841]
 custom_minimum_size = Vector2(181.225, 51.63)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 2
 text = "Level 7"
 
-[node name="Lvl567AndBackBtn" type="VBoxContainer" parent="LevelUI"]
+[node name="Lvl567AndBackBtn" type="VBoxContainer" parent="LevelUI" unique_id=1131097113]
 layout_mode = 2
 
-[node name="BtnLvl2" type="Button" parent="LevelUI/Lvl567AndBackBtn"]
+[node name="BtnLvl2" type="Button" parent="LevelUI/Lvl567AndBackBtn" unique_id=1117346358]
 custom_minimum_size = Vector2(181.225, 51.63)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 2
 text = "Level 2"
 
-[node name="BtnLvl4" type="Button" parent="LevelUI/Lvl567AndBackBtn"]
+[node name="BtnLvl4" type="Button" parent="LevelUI/Lvl567AndBackBtn" unique_id=1517693860]
 custom_minimum_size = Vector2(181.225, 51.63)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 2
 text = "Level 4"
 
-[node name="BtnLvl6" type="Button" parent="LevelUI/Lvl567AndBackBtn"]
+[node name="BtnLvl6" type="Button" parent="LevelUI/Lvl567AndBackBtn" unique_id=1918446663]
 custom_minimum_size = Vector2(181.225, 51.63)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 2
 text = "Level 6"
 
-[node name="BtnBackLevel" type="Button" parent="LevelUI/Lvl567AndBackBtn"]
+[node name="BtnBackLevel" type="Button" parent="LevelUI/Lvl567AndBackBtn" unique_id=688904340]
 custom_minimum_size = Vector2(181.225, 51.63)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 2
 text = "Zurück"
 
-[node name="AudioUI" type="VBoxContainer" parent="."]
+[node name="AudioUI" type="VBoxContainer" parent="." unique_id=855871895]
 visible = false
 offset_left = 288.0
 offset_top = 168.0
 offset_right = 928.0
 offset_bottom = 448.0
 
-[node name="FireRow" type="HBoxContainer" parent="AudioUI"]
+[node name="FireRow" type="HBoxContainer" parent="AudioUI" unique_id=2133509573]
 custom_minimum_size = Vector2(0, 49.535)
 layout_mode = 2
 size_flags_horizontal = 5
 size_flags_vertical = 2
 
-[node name="Label" type="Label" parent="AudioUI/FireRow"]
+[node name="Label" type="Label" parent="AudioUI/FireRow" unique_id=1136242342]
 layout_mode = 2
 text = "Feuer Lautstärke: "
 
-[node name="SliderFire" type="HSlider" parent="AudioUI/FireRow"]
+[node name="SliderFire" type="HSlider" parent="AudioUI/FireRow" unique_id=768262553]
 layout_mode = 2
 size_flags_horizontal = 7
 size_flags_vertical = 4
@@ -215,17 +216,17 @@ max_value = 1.0
 step = 0.05
 value = 1.0
 
-[node name="WindRow" type="HBoxContainer" parent="AudioUI"]
+[node name="WindRow" type="HBoxContainer" parent="AudioUI" unique_id=9037105]
 custom_minimum_size = Vector2(0, 49.535)
 layout_mode = 2
 size_flags_horizontal = 5
 size_flags_vertical = 2
 
-[node name="Label3" type="Label" parent="AudioUI/WindRow"]
+[node name="Label3" type="Label" parent="AudioUI/WindRow" unique_id=957155732]
 layout_mode = 2
 text = "Wind: "
 
-[node name="SliderWind" type="HSlider" parent="AudioUI/WindRow"]
+[node name="SliderWind" type="HSlider" parent="AudioUI/WindRow" unique_id=1290308995]
 layout_mode = 2
 size_flags_horizontal = 7
 size_flags_vertical = 4
@@ -233,17 +234,17 @@ max_value = 1.0
 step = 0.05
 value = 1.0
 
-[node name="MusicRow" type="HBoxContainer" parent="AudioUI"]
+[node name="MusicRow" type="HBoxContainer" parent="AudioUI" unique_id=749695325]
 custom_minimum_size = Vector2(0, 49.535)
 layout_mode = 2
 size_flags_horizontal = 5
 size_flags_vertical = 2
 
-[node name="Label2" type="Label" parent="AudioUI/MusicRow"]
+[node name="Label2" type="Label" parent="AudioUI/MusicRow" unique_id=1556280931]
 layout_mode = 2
 text = "Musik: "
 
-[node name="SliderMusic" type="HSlider" parent="AudioUI/MusicRow"]
+[node name="SliderMusic" type="HSlider" parent="AudioUI/MusicRow" unique_id=176966466]
 layout_mode = 2
 size_flags_horizontal = 7
 size_flags_vertical = 4
@@ -251,7 +252,7 @@ max_value = 1.0
 step = 0.05
 value = 1.0
 
-[node name="BtnBackAudio" type="Button" parent="AudioUI"]
+[node name="BtnBackAudio" type="Button" parent="AudioUI" unique_id=429369755]
 custom_minimum_size = Vector2(0, 49.535)
 layout_mode = 2
 size_flags_horizontal = 5

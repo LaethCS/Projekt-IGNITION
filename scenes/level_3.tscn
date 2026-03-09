@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://185a7uq05k3w"]
+[gd_scene format=3 uid="uid://185a7uq05k3w"]
 
 [ext_resource type="Script" uid="uid://b5n0wulp2mk8l" path="res://scripts/level_1.gd" id="1_vcx5n"]
 [ext_resource type="MeshLibrary" uid="uid://deixplkrgg182" path="res://scenes/SpaceKit_Library.tres" id="1_wae8j"]
@@ -8,8 +8,15 @@
 [ext_resource type="PackedScene" uid="uid://x02ngdy0yrm2" path="res://scenes/Portal.tscn" id="4_ax3dk"]
 [ext_resource type="PackedScene" uid="uid://d2epmyui58ti7" path="res://scenes/wind_particales.tscn" id="5_ax3dk"]
 [ext_resource type="PackedScene" uid="uid://ruw72ou20msr" path="res://scenes/level_background_music.tscn" id="9_56dhn"]
+[ext_resource type="PackedScene" uid="uid://dlh5cfp43frcn" path="res://Assets/GLTF format/pipe_entrance.glb" id="9_ema3p"]
+[ext_resource type="PackedScene" uid="uid://c0ny57ys8f4yt" path="res://Assets/GLTF format/pipe_cornerRoundLarge.glb" id="10_8uepa"]
 [ext_resource type="PackedScene" uid="uid://balun8n66d573" path="res://scenes/win_ui.tscn" id="10_56dhn"]
+[ext_resource type="PackedScene" uid="uid://ckqjbhq3uryg8" path="res://Assets/GLTF format/pipe_corner.glb" id="11_q2dsb"]
 [ext_resource type="PackedScene" uid="uid://bgfe24noch4le" path="res://scenes/fire_extinguisher.tscn" id="12_ax3dk"]
+[ext_resource type="PackedScene" uid="uid://coro3m2w4pggp" path="res://Assets/GLTF format/pipe_rampLarge.glb" id="12_q2dsb"]
+[ext_resource type="PackedScene" uid="uid://dxqrk4fevkisp" path="res://drip_fire.tscn" id="13_p3r0x"]
+[ext_resource type="PackedScene" uid="uid://bj6uiaykb1yq8" path="res://Assets/GLTF format/pipe_ring.glb" id="16_q7pjq"]
+[ext_resource type="PackedScene" uid="uid://5xtsp4hqtnpb" path="res://Assets/GLTF format/pipe_cross.glb" id="17_wa6ex"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5xbjy"]
 sky_top_color = Color(0.956889, 0.667484, 0.540379, 1)
@@ -26,14 +33,14 @@ glow_enabled = true
 glow_bloom = 0.39
 glow_blend_mode = 0
 
-[node name="Level_3" type="Node3D" node_paths=PackedStringArray("level_portal")]
+[node name="Level_3" type="Node3D" unique_id=732301508 node_paths=PackedStringArray("level_portal")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0233765, -0.160522, 0.0717773)
 script = ExtResource("1_vcx5n")
 level_portal = NodePath("Gameplay/Portal")
 
-[node name="Grids" type="Node3D" parent="."]
+[node name="Grids" type="Node3D" parent="." unique_id=1735699191]
 
-[node name="testing_room" type="GridMap" parent="Grids"]
+[node name="testing_room" type="GridMap" parent="Grids" unique_id=914924261]
 transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, -2.38419e-07, -4.76837e-07, 2.38419e-07)
 mesh_library = ExtResource("1_wae8j")
 cell_size = Vector3(1, 0.1, 1)
@@ -42,7 +49,7 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, 8, 0)
 
-[node name="ground_and_platform" type="GridMap" parent="Grids"]
+[node name="ground_and_platform" type="GridMap" parent="Grids" unique_id=1096787962]
 mesh_library = ExtResource("1_wae8j")
 cell_size = Vector3(1, 1, 1)
 data = {
@@ -50,7 +57,7 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
-[node name="walls_and_buildings" type="GridMap" parent="Grids"]
+[node name="walls_and_buildings" type="GridMap" parent="Grids" unique_id=554899632]
 transform = Transform3D(5.58, 0, 0, 0, 5.58, 0, 0, 0, 5.58, 0, 0, 0)
 mesh_library = ExtResource("1_wae8j")
 cell_size = Vector3(0.565, 0.065, 0.495)
@@ -59,7 +66,7 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
-[node name="objects" type="GridMap" parent="Grids"]
+[node name="objects" type="GridMap" parent="Grids" unique_id=302263837]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 mesh_library = ExtResource("1_wae8j")
 cell_size = Vector3(1, 0.305, 0.6)
@@ -68,7 +75,7 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
-[node name="objects2" type="GridMap" parent="Grids"]
+[node name="objects2" type="GridMap" parent="Grids" unique_id=967044654]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 mesh_library = ExtResource("1_wae8j")
 cell_size = Vector3(1, 0.305, 0.52)
@@ -77,7 +84,7 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
-[node name="objects3" type="GridMap" parent="Grids"]
+[node name="objects3" type="GridMap" parent="Grids" unique_id=1422925233]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 152.088, -0.511658, 189.446)
 mesh_library = ExtResource("1_wae8j")
 cell_size = Vector3(0.5, 0.305, 1.015)
@@ -86,7 +93,7 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
-[node name="testing_room_walls" type="GridMap" parent="Grids"]
+[node name="testing_room_walls" type="GridMap" parent="Grids" unique_id=26126865]
 transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 2.775, 4.325, -2.895)
 mesh_library = ExtResource("1_wae8j")
 cell_size = Vector3(1, 1.13, 0.785)
@@ -95,74 +102,96 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, -1, 0)
 
-[node name="Gameplay" type="Node3D" parent="."]
+[node name="Gameplay" type="Node3D" parent="." unique_id=1336399473]
 
-[node name="Player" parent="Gameplay" instance=ExtResource("2_ha73p")]
+[node name="Player" parent="Gameplay" unique_id=1556774221 instance=ExtResource("2_ha73p")]
 transform = Transform3D(0.99944, 0, 0.0334691, 0, 1, 0, -0.0334691, 0, 0.99944, 57.469, 3.293, 16.555)
 
-[node name="Fire" parent="Gameplay" instance=ExtResource("3_vcx5n")]
-transform = Transform3D(2.175, 0, 0, 0, -2.15264, 0.311082, 0, -0.311082, -2.15264, 58.108, 1.171, 6.75)
+[node name="Fire4" parent="Gameplay" unique_id=1823534384 instance=ExtResource("3_vcx5n")]
+transform = Transform3D(-2.14323, 0.0872059, -3.34333e-07, 0.0872059, 2.14323, 1.65387e-08, 3.34729e-07, 2.93267e-09, -2.145, 59.3323, 2.95773, 2.5000396)
+fire_source_path = NodePath("../DripFire")
 
-[node name="Fire2" parent="Gameplay" instance=ExtResource("3_vcx5n")]
-transform = Transform3D(-1.95477, -0.528681, -3.67907e-07, 0.45284, -1.67435, 1.04504, -0.272837, 1.0088, 1.73451, 59.4505, 3.61205, 6.84061)
-
-[node name="Fire3" parent="Gameplay" instance=ExtResource("3_vcx5n")]
-transform = Transform3D(1.995, 0, 0, 0, -1.69601, -1.05051, 0, 1.05051, -1.69601, 57.9929, 3.20379, 2.63603)
-
-[node name="Fire4" parent="Gameplay" instance=ExtResource("3_vcx5n")]
-transform = Transform3D(-2.14323, 0.0872059, -3.34333e-07, 0.0872059, 2.14323, 1.65387e-08, 3.34729e-07, 2.93267e-09, -2.145, 59.3323, 2.95773, 2.42341)
-fire_source_path = NodePath("../Fire")
-
-[node name="Fire5" parent="Gameplay" instance=ExtResource("3_vcx5n")]
+[node name="Fire5" parent="Gameplay" unique_id=17793734 instance=ExtResource("3_vcx5n")]
 transform = Transform3D(2.145, 0, 0, 0, 1.52817, -1.50524, 0, 1.50524, 1.52816, 57.3895, 3.79774, 0.783401)
-fire_source_path = NodePath("../Fire2")
+fire_source_path = NodePath("../DripFire2")
 
-[node name="Fire6" parent="Gameplay" instance=ExtResource("3_vcx5n")]
+[node name="Fire6" parent="Gameplay" unique_id=1642921251 instance=ExtResource("3_vcx5n")]
 transform = Transform3D(2.145, 0, 0, 0, 1.5685, -1.46316, 0, 1.46316, 1.5685, 60.7795, 3.89029, 1.23637)
-fire_source_path = NodePath("../Fire3")
+fire_source_path = NodePath("../DripFire")
 
-[node name="WindZone" parent="Gameplay" instance=ExtResource("4_56dhn")]
+[node name="WindZone" parent="Gameplay" unique_id=408901854 instance=ExtResource("4_56dhn")]
 transform = Transform3D(-1.37053e-06, 0, 121.161, 0, 15.347, 0, -31.354, 0, -5.29612e-06, 72.449, 3.385, 25.4981)
 wind_direction = Vector3(-1, 0, 0)
 wind_strength = 5.0
 
-[node name="wind_particales" parent="Gameplay" instance=ExtResource("5_ax3dk")]
+[node name="wind_particales" parent="Gameplay" unique_id=1718822638 instance=ExtResource("5_ax3dk")]
 transform = Transform3D(-2.28829e-07, 0, 11.44, 0, 2.975, 0, -5.235, 0, -5.00058e-07, 84.3025, 2.93085, 21.9745)
 
-[node name="wind_particales2" parent="Gameplay" instance=ExtResource("5_ax3dk")]
+[node name="wind_particales2" parent="Gameplay" unique_id=1974912063 instance=ExtResource("5_ax3dk")]
 transform = Transform3D(-2.28829e-07, 0, 11.44, 0, 2.975, 0, -5.235, 0, -5.00058e-07, 84.3025, 2.93085, 33.2119)
 
-[node name="wind_particales3" parent="Gameplay" instance=ExtResource("5_ax3dk")]
+[node name="wind_particales3" parent="Gameplay" unique_id=1546195447 instance=ExtResource("5_ax3dk")]
 transform = Transform3D(-2.28829e-07, 0, 11.44, 0, 2.975, 0, -5.235, 0, -5.00058e-07, 84.3025, 2.93085, 16.0299)
 
-[node name="FireExtinguisher" parent="Gameplay" instance=ExtResource("12_ax3dk")]
+[node name="FireExtinguisher" parent="Gameplay" unique_id=912700041 instance=ExtResource("12_ax3dk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.215, 1.544, 12.48)
 max_amount = 77.0
 infinite_ammo = false
 
-[node name="FireExtinguisher2" parent="Gameplay" instance=ExtResource("12_ax3dk")]
+[node name="FireExtinguisher2" parent="Gameplay" unique_id=656194349 instance=ExtResource("12_ax3dk")]
 transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, 57.154, 1.544, 12.161)
 max_amount = 77.0
 infinite_ammo = false
 
-[node name="Portal" parent="Gameplay" instance=ExtResource("4_ax3dk")]
+[node name="Portal" parent="Gameplay" unique_id=54346495 instance=ExtResource("4_ax3dk")]
 transform = Transform3D(-3.67715, 0, 2.59395, 0, 4.5, 0, -2.59395, 0, -3.67715, 57.001, 0.515, 19.05)
 next_level_path = "res://scenes/level_4.tscn"
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="GPUParticlesCollisionHeightField3D" type="GPUParticlesCollisionHeightField3D" parent="Gameplay" unique_id=1043088391]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57, 0, 16)
+size = Vector3(20, 2, 20)
+follow_camera_enabled = true
+
+[node name="pipe_entrance2" parent="Gameplay" unique_id=1819937542 instance=ExtResource("9_ema3p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.057796, 4.6925, -2.8000004)
+
+[node name="pipe_cornerRoundLarge2" parent="Gameplay" unique_id=389652539 instance=ExtResource("10_8uepa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.866528, 0.5500007, 0.20867823)
+
+[node name="pipe_corner2" parent="Gameplay" unique_id=1072470643 instance=ExtResource("11_q2dsb")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 59.984432, 6.677231, 5.4739194)
+
+[node name="pipe_rampLarge2" parent="Gameplay" unique_id=770247305 instance=ExtResource("12_q2dsb")]
+transform = Transform3D(-0.40135157, 0.6951612, -0.596379, -0.8660254, -0.50000006, 0, -0.29818952, 0.5164793, 0.802703, 58.313206, 3.0243866, 3.3893313)
+
+[node name="DripFire" parent="Gameplay" unique_id=1782931919 instance=ExtResource("13_p3r0x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 61.385326, 5.1453176, 5.778689)
+velocity_direction = Vector3(-1, 1, 0)
+
+[node name="pipe_ring2" parent="Gameplay" unique_id=1867019039 instance=ExtResource("16_q7pjq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.056164, 4.6926837, -1.803477)
+
+[node name="pipe_cross2" parent="Gameplay" unique_id=2051619701 instance=ExtResource("17_wa6ex")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.788227, 0.56959105, 0.16005234)
+
+[node name="DripFire2" parent="Gameplay" unique_id=261997006 instance=ExtResource("13_p3r0x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.10346, 5.015359, 0.26452762)
+velocity_direction = Vector3(0, 1, -1)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=824266471]
 environment = SubResource("Environment_4nkto")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=271255579]
 transform = Transform3D(0.902367, 0.371743, 0.218039, -0.430968, 0.77836, 0.456533, 0, -0.505928, 0.862576, 0, 25.4245, -0.912609)
 shadow_enabled = true
 
-[node name="level_background_music" parent="." instance=ExtResource("9_56dhn")]
+[node name="level_background_music" parent="." unique_id=1584823600 instance=ExtResource("9_56dhn")]
 
-[node name="WinUI" parent="." instance=ExtResource("10_56dhn")]
+[node name="WinUI" parent="." unique_id=368649875 instance=ExtResource("10_56dhn")]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=514420849]
 
-[node name="FireCounterLabel" type="Label" parent="CanvasLayer"]
+[node name="FireCounterLabel" type="Label" parent="CanvasLayer" unique_id=479917272]
 offset_left = 25.0
 offset_top = 22.0
 offset_right = 168.0

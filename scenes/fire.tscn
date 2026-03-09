@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://d3dnc5g6a3nq4"]
+[gd_scene format=3 uid="uid://d3dnc5g6a3nq4"]
 
 [ext_resource type="Script" uid="uid://cv3cufd2ufc7n" path="res://scripts/fire.gd" id="1_52nqi"]
 [ext_resource type="AudioStream" uid="uid://bbwu7cj3aj2b7" path="res://scenes/fire_sound.mp3" id="2_theev"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://byn4h0netwggk" path="res://scripts/Spark.png" id="7_ajlmw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g5mbl"]
+size = Vector3(1, 0.6014404, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_3l77w"]
 gradient = ExtResource("4_theev")
@@ -175,10 +176,13 @@ size = Vector2(0.5, 0.5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_theev"]
 
-[node name="Fire" type="Node3D" groups=["Fires"]]
+[node name="Fire" type="Node3D" unique_id=1782931919 groups=["Fires"]]
 script = ExtResource("1_52nqi")
+velocity_min = 1.5
+velocity_max = 3.0
+light_power = 5.0
 
-[node name="fire_sound" type="AudioStreamPlayer3D" parent="."]
+[node name="fire_sound" type="AudioStreamPlayer3D" parent="." unique_id=2094205738]
 stream = ExtResource("2_theev")
 volume_db = -10.0
 unit_size = 7.0
@@ -186,25 +190,25 @@ autoplay = true
 max_distance = 10.0
 bus = &"Fire"
 
-[node name="extinguish_sound" type="AudioStreamPlayer3D" parent="."]
+[node name="extinguish_sound" type="AudioStreamPlayer3D" parent="." unique_id=74080174]
 unique_name_in_owner = true
 stream = ExtResource("3_g5mbl")
 volume_db = -21.0
 unit_size = 29.85
 max_distance = 20.0
 
-[node name="DamageZone" type="Area3D" parent="."]
+[node name="DamageZone" type="Area3D" parent="." unique_id=475309730]
 transform = Transform3D(7.445, 0, 0, 0, 7.445, 0, 0, 0, 7.445, 0, 0, 0)
 collision_layer = 4
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageZone"]
-transform = Transform3D(0.42, 0, 0, 0, 0.42, 0, 0, 0, 0.42, 0, 0, 0)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageZone" unique_id=1499131481]
+transform = Transform3D(0.41999936, 0, 0, 0, 0.41999936, 0, 0, 0, 0.41999936, 0, -0.083697475, 0)
 shape = SubResource("BoxShape3D_g5mbl")
 
-[node name="Visuals" type="Node3D" parent="."]
+[node name="Visuals" type="Node3D" parent="." unique_id=554918783]
 
-[node name="FireParticles" type="GPUParticles3D" parent="Visuals"]
+[node name="FireParticles" type="GPUParticles3D" parent="Visuals" unique_id=2065218336]
 amount = 200
 sub_emitter = NodePath("SparkParticles")
 lifetime = 0.8
@@ -214,7 +218,7 @@ trail_lifetime = 0.8
 process_material = SubResource("ParticleProcessMaterial_tuqhi")
 draw_pass_1 = SubResource("RibbonTrailMesh_sbjtb")
 
-[node name="SmokeParticles" type="GPUParticles3D" parent="Visuals/FireParticles"]
+[node name="SmokeParticles" type="GPUParticles3D" parent="Visuals/FireParticles" unique_id=489682741]
 amount = 50
 lifetime = 1.5
 randomness = 1.0
@@ -223,7 +227,7 @@ trail_lifetime = 0.8
 process_material = SubResource("ParticleProcessMaterial_crqtj")
 draw_pass_1 = SubResource("QuadMesh_y8ftx")
 
-[node name="SparkParticles" type="GPUParticles3D" parent="Visuals/FireParticles"]
+[node name="SparkParticles" type="GPUParticles3D" parent="Visuals/FireParticles" unique_id=1720084407]
 amount = 80
 sub_emitter = NodePath("../SmokeParticles")
 lifetime = 0.5
@@ -231,13 +235,13 @@ draw_order = 3
 process_material = SubResource("ParticleProcessMaterial_tvwqf")
 draw_pass_1 = SubResource("QuadMesh_jx1dq")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Visuals"]
+[node name="OmniLight3D" type="OmniLight3D" parent="Visuals" unique_id=2025350605]
 light_color = Color(1, 0.494118, 0.2, 1)
-light_size = 1.0
+omni_range = 8.0
 
-[node name="WindDetector" type="Area3D" parent="."]
+[node name="WindDetector" type="Area3D" parent="." unique_id=1032662528]
 collision_layer = 0
 collision_mask = 8
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WindDetector"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WindDetector" unique_id=1043785242]
 shape = SubResource("BoxShape3D_theev")
