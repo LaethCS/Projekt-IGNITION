@@ -41,21 +41,20 @@ albedo_texture = ExtResource("9_uk7qm")
 [sub_resource type="QuadMesh" id="QuadMesh_7tfso"]
 material = SubResource("StandardMaterial3D_jw05p")
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5xbjy"]
-sky_top_color = Color(0.172521, 0.498753, 0.551577, 1)
-ground_bottom_color = Color(0.843137, 0.6, 0.529412, 1)
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_uk7qm"]
+sky_top_color = Color(0.956889, 0.667484, 0.540379, 1)
+sky_horizon_color = Color(0.796466, 0.638646, 0.587051, 1)
 
 [sub_resource type="Sky" id="Sky_iywne"]
-sky_material = SubResource("ProceduralSkyMaterial_5xbjy")
+sky_material = SubResource("ProceduralSkyMaterial_uk7qm")
 
-[sub_resource type="Environment" id="Environment_4nkto"]
+[sub_resource type="Environment" id="Environment_jw05p"]
 background_mode = 2
+background_energy_multiplier = 0.5
 sky = SubResource("Sky_iywne")
-ssr_enabled = true
-ssao_enabled = true
-ssil_enabled = true
-sdfgi_use_occlusion = true
 glow_enabled = true
+glow_bloom = 0.39
+glow_blend_mode = 0
 
 [node name="Level_7" type="Node3D" node_paths=PackedStringArray("level_portal")]
 script = ExtResource("1_fsh38")
@@ -68,12 +67,18 @@ transform = Transform3D(0.90245, 0, 0.430795, 0, 1, 0, -0.430795, 0, 0.90245, 28
 
 [node name="FireExtinguisher" parent="Gameplay" instance=ExtResource("5_7tfso")]
 transform = Transform3D(0.999883, 0.0152367, -0.00162779, -0.0153234, 0.994225, -0.106217, 0, 0.106229, 0.994341, 15.6889, 1.42644, 5.70299)
+max_amount = 1.0
+infinite_ammo = false
 
 [node name="FireExtinguisher2" parent="Gameplay" instance=ExtResource("5_7tfso")]
 transform = Transform3D(0.999912, 0.0132774, 0.0003333, -0.0132816, 0.999597, 0.0250927, 0, -0.0250949, 0.999685, 21.4, 1.60462, 2.81461)
+max_amount = 1.0
+infinite_ammo = false
 
 [node name="FireExtinguisher3" parent="Gameplay" instance=ExtResource("5_7tfso")]
 transform = Transform3D(1, 0, 0, 0, 1, 0.000297099, 0, -0.000297099, 1, 12.4494, 1.34977, 11.4278)
+max_amount = 1.0
+infinite_ammo = false
 
 [node name="Portal" parent="Gameplay" instance=ExtResource("8_ophlp")]
 transform = Transform3D(3.77046, 0, 2.45634, 0, 4.5, 0, -2.45634, 0, 3.77046, 26.0307, 0.392189, 21.3732)
@@ -122,9 +127,6 @@ transform = Transform3D(1.03316e-07, 0, -1, 0, 1, 0, 1, 0, 1.03316e-07, 31.5027,
 mesh = SubResource("QuadMesh_7tfso")
 skeleton = NodePath("../MeshInstance3D5")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_4nkto")
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.902367, 0.371743, 0.218039, -0.430968, 0.77836, 0.456533, 0, -0.505928, 0.862576, 0, 25.4245, -0.912609)
 shadow_enabled = true
@@ -132,9 +134,13 @@ shadow_enabled = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="FireCounterLabel" type="Label" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 23.0
-metadata/_edit_use_anchors_ = true
+offset_left = 25.0
+offset_top = 22.0
+offset_right = 168.0
+offset_bottom = 68.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 28
 
 [node name="WinUI" parent="." instance=ExtResource("11_e8vmx")]
 
@@ -187,3 +193,6 @@ theme_override_font_sizes/font_size = 42
 [node name="NPC" parent="." instance=ExtResource("11_q4s3e")]
 transform = Transform3D(-0.522127, 0, -0.852868, 0, 1, 0, 0.852868, 0, -0.522127, 18.9921, 0.55, 12.7566)
 is_talkable = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jw05p")

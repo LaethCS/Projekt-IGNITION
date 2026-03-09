@@ -15,13 +15,13 @@
 sky_top_color = Color(0.956889, 0.667484, 0.540379, 1)
 sky_horizon_color = Color(0.796466, 0.638646, 0.587051, 1)
 
-[sub_resource type="Sky" id="Sky_iywne"]
+[sub_resource type="Sky" id="Sky_2y5yt"]
 sky_material = SubResource("ProceduralSkyMaterial_5xbjy")
 
 [sub_resource type="Environment" id="Environment_4nkto"]
 background_mode = 2
 background_energy_multiplier = 0.5
-sky = SubResource("Sky_iywne")
+sky = SubResource("Sky_2y5yt")
 glow_enabled = true
 glow_bloom = 0.39
 glow_blend_mode = 0
@@ -128,5 +128,11 @@ shadow_enabled = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="FireCounterLabel" type="Label" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 25.0
+offset_top = 22.0
+offset_right = 168.0
+offset_bottom = 68.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 28
+text = "Tank: 100"

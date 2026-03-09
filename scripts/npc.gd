@@ -61,7 +61,7 @@ func _physics_process(delta):
 			_use_extinguisher(delta)
 
 func _find_fire():
-	var fires = get_tree().get_nodes_in_group("fire")
+	var fires = get_tree().get_nodes_in_group("Fires")
 	if fires.is_empty():
 		return
 	for f in fires:
